@@ -23,7 +23,7 @@ export default function Home() {
           {
             metrics.map(e => (
               <div className="flex gap-5 px-5">
-                <MetricsCard number={e.number} title={e.title} />
+                <MetricsCard key={e} number={e.number} title={e.title} />
                 
               </div>
             ))
