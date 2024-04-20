@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBarDes from "./components/navBar/navBarDes";
 import FooterDes from "./components/footer/footerDes";
+import NavBarMob from "./components/navBar/navBarMob";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +15,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} bg-[#F7FBFE]`} >
-        <NavBarDes />
+        <div className="max-md:hidden"> <NavBarDes /></div>
+        <div className="md:hidden"> <NavBarMob /> </div>
+
         {children}
         <FooterDes />
+
       </body>
     </html>
   );
