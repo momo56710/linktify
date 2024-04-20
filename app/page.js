@@ -4,7 +4,7 @@ import { stats } from '@/objects/stats';
 import { startups } from "@/objects/startups";
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center p-24 bg-[#F7FBFE] font-bold">
+    <main className="flex min-h-screen flex-col items-center p-24  font-bold">
       <div>
         <p className=" text-[3em] bg-gradient-to-r from-[#1F73D4] via-[#7C39D4] to-[#1F73D4] bg-clip-text text-transparent">Never start from zero again.</p>
         <div className="flex justify-between w-[100%] px-[2em] mt-[3em]">
