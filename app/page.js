@@ -22,8 +22,8 @@ export default function Home() {
         <div className="flex justify-between w-[100%] px-[2em] mt-[3em] divide-x-2">
           {
             metrics.map((e,i) => (
-              <div className="flex gap-5 px-5">
-                <MetricsCard key={i} number={e.number} title={e.title} />
+              <div key={i} className="flex gap-5 px-5">
+                <MetricsCard  number={e.number} title={e.title} />
                 
               </div>
             ))
