@@ -2,15 +2,30 @@ import StatsCard from "./components/statsCard";
 import StartupMainpageCard from "./components/startupMainpageCard";
 import { stats } from '@/objects/stats';
 import { startups } from "@/objects/startups";
+import { metrics } from "@/objects/metrics";
+import MetricsCard from "./components/metricsCard";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-24  font-bold">
       <div>
         <p className=" text-[3em] bg-gradient-to-r from-[#1F73D4] via-[#7C39D4] to-[#1F73D4] bg-clip-text text-transparent">Never start from zero again.</p>
-        <div className="flex justify-between w-[100%] px-[2em] mt-[3em]">
+        <div className="flex justify-between w-[100%] px-[2em] mt-[3em] mb-[5em]">
           {
             stats.map(e => (
               <StatsCard key={e} icon={e.icon} number={e.number} disc={e.disc} />
+            ))
+          }
+        </div>
+
+
+        <p className=" text-[3em] bg-gradient-to-r from-[#1F73D4] via-[#7C39D4] to-[#1F73D4] bg-clip-text text-transparent text-center">Metrics in Motion</p>
+        <div className="flex justify-between w-[100%] px-[2em] mt-[3em] divide-x-2">
+          {
+            metrics.map(e => (
+              <div className="flex gap-5 px-5">
+                <MetricsCard number={e.number} title={e.title} />
+                
+              </div>
             ))
           }
         </div>
