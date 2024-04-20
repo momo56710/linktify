@@ -7,7 +7,10 @@ export default function NavBarMob() {
     const handleClick = () => {
         setIsOpen(!isOpen);
     };
-    isOpen ? document.body.style.overflow = "hidden" : document.body.style.overflow = "scroll"
+    if (process.browser) {
+        isOpen ? document.body.style.overflow = "hidden" : document.body.style.overflow = "scroll"
+    }
+
     return (
         <div className='relative bg-[#F7FBFE]'>
             <div className='px-5 pt-5 flex justify-between '>
