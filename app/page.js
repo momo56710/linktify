@@ -21,9 +21,9 @@ export default function Home() {
         <p className=" text-[3em] bg-gradient-to-r from-[#1F73D4] via-[#7C39D4] to-[#1F73D4] bg-clip-text text-transparent text-center">Metrics in Motion</p>
         <div className="flex justify-between w-[100%] px-[2em] mt-[3em] divide-x-2">
           {
-            metrics.map(e => (
+            metrics.map((e,i) => (
               <div className="flex gap-5 px-5">
-                <MetricsCard key={e} number={e.number} title={e.title} />
+                <MetricsCard key={i} number={e.number} title={e.title} />
                 
               </div>
             ))
