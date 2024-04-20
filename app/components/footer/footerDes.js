@@ -14,11 +14,11 @@ export default function FooterDes() {
                         footer.map(e => (
 
 
-                            <div>
+                            <div key={e}>
                                 <p className='text-[#797a7a] text-[0.8em]'>{e.title}</p>
                                 <div className='mt-[1em]'>
                                     {
-                                        e.elmnts.map(e => (<p className='text-[1.5em] mt-[0.5em]'>{e}</p>))
+                                        e.elmnts.map(e => (<p key={e} className='text-[1.5em] mt-[0.5em]'>{e}</p>))
                                     }
                                 </div>
                             </div>

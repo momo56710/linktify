@@ -10,7 +10,7 @@ export default function Home() {
         <div className="flex justify-between w-[100%] px-[2em] mt-[3em]">
           {
             stats.map(e => (
-              <StatsCard icon={e.icon} number={e.number} disc={e.disc} />
+              <StatsCard key={e} icon={e.icon} number={e.number} disc={e.disc} />
             ))
           }
         </div>
@@ -25,7 +25,7 @@ export default function Home() {
       <div className="grid gap-[2em] mt-[5em]">
         {
           startups.map(e => (
-            <StartupMainpageCard img={e.img} title={e.title} disc={e.disc} link={e.link} />
+            <StartupMainpageCard key={e} img={e.img} title={e.title} disc={e.disc} link={e.link} />
           ))
         }
 
