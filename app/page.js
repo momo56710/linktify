@@ -1,6 +1,7 @@
 import StatsCard from "./components/statsCard";
 import StartupMainpageCard from "./components/startupMainpageCard";
 import { stats } from '@/objects/stats';
+import Link from "next/link";
 import { startups } from "@/objects/startups";
 import { metrics } from "@/objects/metrics";
 import MetricsCard from "./components/metricsCard";
@@ -12,8 +13,8 @@ export default function Home() {
           <p className="max-md:text-[2em] mt-10  text-[3em] bg-gradient-to-r from-[#1F73D4] via-[#7C39D4] to-[#1F73D4] bg-clip-text text-transparent text-center">Never start from zero again.</p>
           <div className="flex max-md:flex-col justify-between max-md:gap-10 w-[100%] px-[2em] mt-[3em] mb-[5em]">
             {
-              stats.map(e => (
-                <StatsCard key={e} icon={e.icon} number={e.number} disc={e.disc} />
+              stats.map((e,i) => (
+                <StatsCard key={i} icon={e.icon} number={e.number} disc={e.disc} />
               ))
             }
           </div>
@@ -35,14 +36,14 @@ export default function Home() {
       <div className="md:mt-[5em] flex flex-col gap-[2em] justify-center items-center">
         <p className="md:w-[30em] w-[90vw] md:m-auto text-center leading-8 text-[#858694]">Empowering startups with financial fuel, ensuring they never restart from ground zero again</p>
         <div className="flex max-md:flex-col md:justify-center w-[90vw] text-center gap-[1em] md:gap-[2em] uppercase text-[14px]">
-          <span className="bg-black text-white py-3 px-6 rounded-[80px]">Sign up now</span>
+          <Link href={'/signup'} className="bg-black text-white py-3 px-6 rounded-[80px]">Sign up now</Link> 
           <span className="border-[#c4c4c4] border-[2px] border-solid py-3 px-6 rounded-[80px]">Explore</span>
         </div>
       </div>
       <div className="grid gap-[2em] mt-[5em]">
         {
-          startups.map(e => (
-            <StartupMainpageCard key={e} img={e.img} title={e.title} disc={e.disc} link={e.link} />
+          startups.map((e,i) => (
+            <StartupMainpageCard key={i} img={e.img} title={e.title} disc={e.disc} />
           ))
         }
 

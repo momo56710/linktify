@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-export default function StartupMainpageCard({ img, title, disc, link }) {
+export default function StartupMainpageCard({ img, title, disc }) {
     return (
         <div className='flex max-md:flex-col justify-center items-center gap-4 m-auto max-w-[1440px] max-md:bg-[#E6E3F2] max-md:p-5 rounded-[20px]'>
 

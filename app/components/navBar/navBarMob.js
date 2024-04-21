@@ -33,7 +33,7 @@ export default function NavBarMob() {
 
                 </button>
             </div>
-            <div className={`absolute transition-all bg-[#F7FBFE] w-[100vw]  duration-500 ease-out ${isOpen ? 'top-[80px]' : 'top-[-400px]'}`}>
+            <div className={`z-[1] absolute transition-all bg-[#F7FBFE] w-[100vw]  duration-500 ease-out ${isOpen ? 'top-[80px]' : 'top-[-400px]'}`}>
                 <div className='justify-self-center  px-5 text-[0.8em]'>
                     <ul className='flex flex-col gap-8 font-bold uppercase pb-2'>
                         <li>Explore</li>
@@ -51,7 +51,7 @@ export default function NavBarMob() {
 
 
             </div>
-            <div className={`z-[-1] transition-all w-[100vw] h-[100vh]  left-0 bg-[#00000050] absolute  duration-[500ms] ease-out ${isOpen ? 'top-[10em]' : 'top-[-800px]'}`}></div>
+            <div className={` transition-all w-[100vw] h-[100vh]  left-0 bg-[#00000050] absolute  duration-[500ms] ease-out ${isOpen ? 'top-[10em]' : 'top-[-110vh]'}`}></div>
         </div>
     )
 }

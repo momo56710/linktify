@@ -11,14 +11,14 @@ export default function FooterDes() {
                         <Image width={100} src={linktifyLogoWht} />
                     </div>
                     {
-                        footer.map(e => (
+                        footer.map((e, i) => (
 
 
-                            <div key={e} className='max-md:p-5 rounded-[20px] max-md:border-[1px] max-md:border-[#797979]'>
+                            <div key={i} className='max-md:p-5 rounded-[20px] max-md:border-[1px] max-md:border-[#797979]'>
                                 <p className='text-[#797a7a] text-[0.8em]'>{e.title}</p>
                                 <div className='mt-[1em]'>
                                     {
-                                        e.elmnts.map(e => (<p key={e} className='text-[1.5em] mt-[0.5em]'>{e}</p>))
+                                        e.elmnts.map((e, i) => (<p key={i} className='text-[1.5em] mt-[0.5em]'>{e}</p>))
                                     }
                                 </div>
                             </div>
