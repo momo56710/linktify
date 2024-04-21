@@ -2,7 +2,7 @@
 import { startups } from '@/objects/startups';
 import { usePathname } from 'next/navigation'
 import React, { useRef, useEffect, useState } from 'react'
-export default function page() {
+export default function Page() {
     //getting startup
     let startup
     var pathName = usePathname();
