@@ -28,13 +28,13 @@ export default function Page() {
     console.log(days)
     return (
 
-        <div className='max-w-[1440px] m-auto my-10'>
-            <p className='text-[#2271B9] text-[3em] text-center font-bold'>{startup.title}</p>
-            <div className='flex gap-10 mt-10'>
-                <img src={startup.img.src} className='w-[50%]'/>
-                <div className='flex-1'>
-                    <div className='m-auto'>
-                        <p className='text-center mb-4 font-bold text-[2em]'>Stats</p>
+        <div className='max-w-[1440px] m-auto my-10 '>
+            <p className='text-[#2271B9] text-[3em] max-md:text-[1.5em] text-center font-bold'>{startup.title}</p>
+            <div className='flex gap-10 mt-10 max-md:m-5 p-5 max-md:flex-col bg-white max-md:rounded-[30px]'>
+                <img src={startup.img.src} className='md:w-[50%] max-md:w-[80vw] max-md:m-auto'/>
+                <div className='md:flex-1'>
+                    <div className='m-auto max-md:w-[80vw]'>
+                        <p className='text-center mb-4 font-bold text-[2em] max-md:text-[1.5em]'>Stats</p>
                         <div className="h-5 relative max-w-[100%] rounded-[5px] overflow-hidden">
                             <div ref={progress} className="w-full h-full bg-gray-200 absolute"></div>
                             <div class={`h-full bg-[#2271B9] rounded-[5px] relative`} style={{ width: percentage > 100 ?  barWidth : barWidth * percentage / 100  }}></div>
@@ -46,9 +46,9 @@ export default function Page() {
                         <p>backers</p>
                         <p className='mt-5 text-[1.5em] font-bold'>{days}</p>
                         <p>days to go</p>
-                        <div className='flex gap-4 justify-center items-center mt-5'>
-                            <p className='bg-[#000218] text-white px-5 py-3 font-bold rounded-full uppercase'>Back this project</p>
-                            <p className='bg-[#E7EBF2] text-[#000218] px-5 py-3 font-bold rounded-full uppercase'>share</p>
+                        <div className='flex gap-4 justify-center items-center mt-5 max-md:flex-col'>
+                            <p className='bg-[#000218] text-white px-5 py-3 font-bold rounded-full uppercase max-md:w-full text-center'>Back this project</p>
+                            <p className='bg-[#E7EBF2] text-[#000218] px-5 py-3 font-bold rounded-full uppercase max-md:w-full text-center'>share</p>
                         </div>
                     </div>
 
