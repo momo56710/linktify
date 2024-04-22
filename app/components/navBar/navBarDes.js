@@ -4,7 +4,7 @@ import Link from 'next/link'
 import linktifyLogoBlck from '@/assets/Linktify Logo alt.png'
 export default function NavBarDes() {
     return (
-        <div className='grid grid-cols-[1fr,4fr,2fr] pt-[2em] text-[14px] pl-[2em] items-center content-center max-w-[1440px] m-auto'>
+        <div className='grid grid-cols-[1fr,4fr,2fr] pt-[2em] text-[14px] pl-[2em] items-center content-center max-w-[1600px] m-auto'>
             <div><Link href={'/'}><Image src={linktifyLogoBlck} width={100} /></Link> </div>
             <div className='justify-self-center'>
                 <ul className='flex gap-8 font-bold uppercase '>
@@ -17,7 +17,7 @@ export default function NavBarDes() {
 
             <div className='flex gap-5 content-center items-center justify-self-end mr-[2em] font-bold uppercase'>
                 <span className=' py-3 px-6'>start a project</span>
-                <Link href={'/login'} className='bg-black text-white py-3 px-6 rounded-[80px]'>Login</Link>
+                <Link href={'/login'} className='bg-[#001623] text-white py-3 px-6 rounded-[80px]'>Login</Link>
 
             </div>
 

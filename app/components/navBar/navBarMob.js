@@ -17,15 +17,15 @@ export default function NavBarMob() {
                 <div><Image src={linktifyLogoBlck} width={100} /></div>
                 <button onClick={handleClick}
                     className="flex flex-col justify-center items-center">
-                    <span className={`bg-black block transition-all duration-300 ease-out 
+                    <span className={`bg-[#001623] block transition-all duration-300 ease-out 
                     h-0.5 w-6 rounded-sm ${isOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`} >
                     </span>
-                    <span className={`bg-black block transition-all duration-300 ease-out 
+                    <span className={`bg-[#001623] block transition-all duration-300 ease-out 
                     h-0.5 w-6 rounded-sm my-0.5 ${isOpen ?
                             'opacity-0' : 'opacity-100'
                         }`} >
                     </span>
-                    <span className={`bg-black block transition-all duration-300 ease-out 
+                    <span className={`bg-[#001623] block transition-all duration-300 ease-out 
                     h-0.5 w-6 rounded-sm ${isOpen ?
                             '-rotate-45 -translate-y-1' : 'translate-y-0.5'
                         }`} >
@@ -43,7 +43,7 @@ export default function NavBarMob() {
                     </ul>
                     <hr />
                     <div className='flex gap-5 pb-5 content-center text-[0.8em] pt-2 items-center justify-self-end mr-[2em] font-bold uppercase'>
-                        <span className='bg-black text-white  py-1.5 px-3 rounded-[80px]'>Sign Up</span>
+                        <span className='bg-[#001623] text-white  py-1.5 px-3 rounded-[80px]'>Sign Up</span>
                         <span className='py-3 px-6'>Login</span>
 
                     </div>

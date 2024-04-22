@@ -7,7 +7,7 @@ export default function page() {
             <p className='text-[#2271B9] text-[3em] text-center font-bold'>Explore</p>
             <div className='flex gap-[3em] justify-center flex-wrap '>
                 {
-                    startups.map((e, i) => (<ExploreStartupsCard key={i} title={e.title} img={e.img} disc={e.shortDisc} />))
+                    startups.map((e, i) => (<ExploreStartupsCard key={i} title={e.title} logo={e.logo} disc={e.shortDisc} />))
                 }
             </div>
         </div>
