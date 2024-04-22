@@ -25,7 +25,6 @@ export default function Page() {
     const targetTime = new Date(targetDate).getTime()
     const timeRemaining = targetTime - now
     const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24)) + 1;
-    console.log(days)
     return (
 
         <div className='max-w-[1600px] m-auto my-10 '>
@@ -56,10 +55,43 @@ export default function Page() {
 
                 </div>
             </div>
+
             <p className='text-center text-[8em] my-10 font-bold text-[#001623]'>our story</p>
-            <div>
+            <div className='flex flex-col gap-[4em]'>
                 {
-                    startup.stories.map((e,i)=>(<div key={i}></div>))
+                    startup.stories.map((e, i) => (
+                        <div key={i} className='flex gap-10 '>
+                            <img src={e.cover.src} className='w-[300px] rounded-2xl aspect-square' />
+                            <div>
+                                <p>{e.title}</p>
+                                <p>{e.disc}</p>
+                            </div>
+                        </div>)
+                    )
+                }
+            </div>
+            <p className='text-center text-[8em] my-10 font-bold text-[#001623]'>Comments</p>
+            <div className='flex flex-col gap-[4em]'>
+                {
+                    startup.comments.map((e, i) => (
+                        <div key={i} className='border-[1px] border-[#001623] rounded-[15px] p-5'>
+                            <div className='flex items-center gap-5'>
+                                <img src={e.user.profilePicture.src} className='w-[80px] rounded-full aspect-square' />
+                                <p className='text-[2em] font-bold'>{e.user.userName}</p>
+                            </div>
+                            <p className='ml-[80px] text-[1.5em]'>{e.comment}</p>
+                            {
+                                e.replies && e.replies.map((e, i) => (
+                                    <div key={i} className='ml-[100px] mt-5 border-[1px] border-[#001623] rounded-[15px] p-5'>
+                                        <div className='flex items-center gap-5'>
+                                            <img src={e.user.profilePicture.src} className='w-[80px] rounded-full aspect-square' />
+                                            <p className='text-[2em] font-bold'>{e.user.userName}</p>
+                                        </div>
+                                        <p className='ml-[80px] text-[1.5em]'>{e.comment}</p>
+                                    </div>))
+                            }
+                        </div>)
+                    )
                 }
             </div>
 

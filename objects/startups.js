@@ -13,91 +13,146 @@ import ecoCraftCover from '@/assets/EcoCraft/cover.jpg'
 import ecoCraftStory1 from '@/assets/EcoCraft/EcoCraft 1.jpg'
 import ecoCraftStory2 from '@/assets/EcoCraft/EcoCraft 2.jpeg'
 import ecoCraftStory3 from '@/assets/EcoCraft/EcoCraft 3.jpeg'
+import { ecoCraft, impactConnect, momo, techVent } from './users'
 
 export const startups = [
     {
         'logo': techVentLogo,
-        'cover' : techVentCover,
+        'cover': techVentCover,
         'title': 'TechVent Solutions',
         'shortDisc': 'TechVent Solutions is a cutting-edge technology company',
         'disc': 'TechVent Solutions is a cutting-edge technology company specializing in AI-driven projects. Alex Techton, the CEO, has a proven track record of successful ventures in the tech industry. TechVent is seeking funding to scale its latest project, an innovative AI platform revolutionizing data analysis.',
         'goal': 1200000,
         'funded': 500000,
-        'backers' : 30,
-        'deadline' : '2024-04-30',
-        'stories' : [
+        'backers': 30,
+        'deadline': '2024-04-30',
+        'stories': [
             {
-                'cover' : techVentStory1,
-                'title' : '',
-                'disc' : ''
+                'cover': techVentStory1,
+                'title': '',
+                'disc': ''
             },
             {
-                'cover' : techVentStory2,
-                'title' : '',
-                'disc' : ''
+                'cover': techVentStory2,
+                'title': '',
+                'disc': ''
             },
             {
-                'cover' : techVentStory3,
-                'title' : '',
-                'disc' : ''
+                'cover': techVentStory3,
+                'title': '',
+                'disc': ''
             },
+        ],
+        'comments' :[
+            {
+                'user' : momo,
+                'comment' : "I'm investing in this product looks amazing",
+                'replies' : [
+                    {
+                        'user' : techVent,
+                        'comment' : "thank you we'll keep improving"
+                    }
+                ]
+            }
         ]
     },
     {
         'logo': impactConnectLogo,
-        'cover' : impactConnectCover,
+        'cover': impactConnectCover,
         'title': 'ImpactConnect',
         'shortDisc': 'ImpactConnect Foundation is a non-profit organization',
         'disc': 'ImpactConnect Foundation is a non-profit organization founded by Maya Changemaker, a dedicated social activist. The foundation is focused on community empowerment initiatives. Maya is seeking funding to expand their current programs and make a more significant impact on communities in need.',
         'goal': 2000000,
         'funded': 1500000,
-        'backers' : 30,
-        'deadline' : '2024-04-30',
-        'story' : [
+        'backers': 30,
+        'deadline': '2024-04-30',
+        'stories': [
             {
-                'cover' : impactConnectStory1,
-                'title' : '',
-                'disc' : ''
+                'cover': impactConnectStory1,
+                'title': '',
+                'disc': ''
             },
             {
-                'cover' : impactConnectStory2,
-                'title' : '',
-                'disc' : ''
+                'cover': impactConnectStory2,
+                'title': '',
+                'disc': ''
             },
             {
-                'cover' : impactConnectStory3,
-                'title' : '',
-                'disc' : ''
+                'cover': impactConnectStory3,
+                'title': '',
+                'disc': ''
+            },
+        ],
+        'comments' :[
+            {
+                'user' : momo,
+                'comment' : "I'm investing in this product looks amazing",
+                'replies' : [
+                    {
+                        'user' : impactConnect,
+                        'comment' : "thank you we'll keep improving"
+                    },
+                    {
+                        'user' : momo , 
+                        'comment' : 'keep it up'
+                    }
+                ]
+            },
+            {
+                'user' : momo,
+                'comment' : "I'm investing in this product looks amazing",
+                'replies' : [
+                    {
+                        'user' : impactConnect,
+                        'comment' : "thank you we'll keep improving"
+                    },
+                    {
+                        'user' : momo , 
+                        'comment' : 'keep it up'
+                    }
+                ]
             },
         ]
 
     },
     {
         'logo': ecoCraftLogo,
-        'cover' : ecoCraftCover,
+        'cover': ecoCraftCover,
         'title': 'EcoCraft Co.',
         'shortDisc': 'EcoCraft Co. is an e-commerce company dedicated to sustainable products.',
         'disc': 'EcoCraft Co. is an e-commerce company dedicated to sustainable products. Ryan Retailer, the founder, has built a successful business around environmentally friendly goods. EcoCraft is seeking funding to scale its operations, improve supply chain sustainability, and expand its product line.',
         'goal': 1200000,
         'funded': 2000000,
-        'backers' : 30,
-        'deadline' : '2024-04-30',
-        'story' : [
+        'backers': 30,
+        'deadline': '2024-04-30',
+        'stories': [
             {
-                'cover' : ecoCraftStory1,
-                'title' : '',
-                'disc' : ''
+                'cover': ecoCraftStory1,
+                'title': 'Roots of Passion',
+                'disc': 'In the heart of our journey is a passion for a greener future. EcoCraft Co. was born from the vision of Ryan Retailer, a dedicated entrepreneur committed to reshaping commerce into a force for good.'
             },
             {
-                'cover' : ecoCraftStory2,
-                'title' : '',
-                'disc' : ''
+                'cover': ecoCraftStory2,
+                'title': 'Sustainable Beginnings',
+                'disc': "Ryan's story began with a simple belief — that sustainable living should be accessible to all. Fueled by this conviction, EcoCraft Co. emerged as an e-commerce haven for conscientious consumers, offering a curated collection of environmentally friendly products."
             },
             {
-                'cover' : ecoCraftStory3,
-                'title' : '',
-                'disc' : ''
+                'cover': ecoCraftStory3,
+                'title': 'More Than Products',
+                'disc': "From humble beginnings, our commitment to sustainability has driven every decision. We've built a thriving business, but we're not stopping there. We are on a mission to scale our operations, refining our supply chain to set new standards for eco-conscious commerce."
             },
+        ],
+        'comments' :[
+            {
+                'user' : momo,
+                'comment' : "I'm investing in this product looks amazing",
+                'replies' : [
+                    {
+                        'user' : ecoCraft,
+                        'comment' : "thank you we'll keep improving"
+                    }
+                ]
+            }
         ]
     },
 ]
