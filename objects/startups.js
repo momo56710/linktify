@@ -43,14 +43,14 @@ export const startups = [
                 'disc': ''
             },
         ],
-        'comments' :[
+        'comments': [
             {
-                'user' : momo,
-                'comment' : "I'm investing in this product looks amazing",
-                'replies' : [
+                'user': momo,
+                'comment': "I'm investing in this product looks amazing",
+                'replies': [
                     {
-                        'user' : techVent,
-                        'comment' : "thank you we'll keep improving"
+                        'user': techVent,
+                        'comment': "thank you we'll keep improving"
                     }
                 ]
             }
@@ -83,32 +83,38 @@ export const startups = [
                 'disc': ''
             },
         ],
-        'comments' :[
+        'comments': [
             {
-                'user' : momo,
-                'comment' : "I'm investing in this product looks amazing",
-                'replies' : [
+                'user': momo,
+                'comment': "I'm investing in this product looks amazing",
+                'likes': '5',
+                'replies': [
                     {
-                        'user' : impactConnect,
-                        'comment' : "thank you we'll keep improving"
+                        'user': impactConnect,
+                        'comment': "thank you we'll keep improving",
+                        'likes': '5',
                     },
                     {
-                        'user' : momo , 
-                        'comment' : 'keep it up'
+                        'user': momo,
+                        'comment': 'keep it up',
+                        'likes': '5',
                     }
                 ]
             },
             {
-                'user' : momo,
-                'comment' : "I'm investing in this product looks amazing",
-                'replies' : [
+                'user': momo,
+                'comment': "I'm investing in this product looks amazing",
+                'likes': '5',
+                'replies': [
                     {
-                        'user' : impactConnect,
-                        'comment' : "thank you we'll keep improving"
+                        'user': impactConnect,
+                        'comment': "thank you we'll keep improving",
+                        'likes': '5',
                     },
                     {
-                        'user' : momo , 
-                        'comment' : 'keep it up'
+                        'user': momo,
+                        'comment': 'keep it up',
+                        'likes': '5',
                     }
                 ]
             },
@@ -142,14 +148,16 @@ export const startups = [
                 'disc': "From humble beginnings, our commitment to sustainability has driven every decision. We've built a thriving business, but we're not stopping there. We are on a mission to scale our operations, refining our supply chain to set new standards for eco-conscious commerce."
             },
         ],
-        'comments' :[
+        'comments': [
             {
-                'user' : momo,
-                'comment' : "I'm investing in this product looks amazing",
-                'replies' : [
+                'user': momo,
+                'comment': "I'm investing in this product looks amazing",
+                'likes': '5',
+                'replies': [
                     {
-                        'user' : ecoCraft,
-                        'comment' : "thank you we'll keep improving"
+                        'user': ecoCraft,
+                        'comment': "thank you we'll keep improving",
+                        'likes': '5',
                     }
                 ]
             }
