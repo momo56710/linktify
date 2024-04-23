@@ -29,18 +29,18 @@ export const startups = [
         'stories': [
             {
                 'cover': techVentStory1,
-                'title': '',
-                'disc': ''
+                'title': 'Tech-Driven Beginnings',
+                'disc': "Olivia's story began with a simple yet powerful idea — that technology should not only simplify but transform lives. Thus, TechVent emerged as a tech haven, providing cutting-edge solutions and pushing the boundaries of what's possible."
             },
             {
                 'cover': techVentStory2,
-                'title': '',
-                'disc': ''
+                'title': 'Beyond Gadgets',
+                'disc': "Our products aren't just gadgets; they're catalysts for change. Each creation embodies a commitment to pushing the tech envelope, fostering creativity, and building a community dedicated to the future of innovation."
             },
             {
                 'cover': techVentStory3,
-                'title': '',
-                'disc': ''
+                'title': 'Crafting the Future',
+                'disc': "Join us on this journey towards a world where every tech innovation contributes to a brighter tomorrow. Together, we can craft a future that seamlessly integrates technology into our lives — one TechVent at a time."
             },
         ],
         'comments': [

@@ -27,14 +27,11 @@ export default function Page() {
     const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24)) + 1;
     return (
 
-        <div className='max-w-[1600px] m-auto my-10 '>
-            <div className='relative h-[30em] overflow-hidden bg-[#00000090]'>
-                <img src={startup.logo.src} className='w-[100%] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] max-md:w-[80vw] max-md:m-auto absolute z-[-1]' />
-            </div>
-            <div className='flex gap-10 max-md:flex-col bg-white max-md:rounded-[30px]'>
-                <img src={startup.logo.src} className='md:w-[50%] max-md:w-[80vw] max-md:m-auto' />
+        <div className='max-w-[1600px] m-auto my-10 max-md:text-[10px] md:p-10'>
+            <div className='flex gap-10 max-md:flex-col bg-white md:p-10 max-md:pb-6 mt-5 md:rounded-2xl'>
+                <img src={startup.logo.src} className='md:w-[50%] max-md:m-auto' />
                 <div className='md:flex-1 my-auto'>
-                    <div className='m-auto max-md:w-[80vw]'>
+                    <div className='m-auto max-md:mx-5'>
                         <p className='text-center mb-4 font-bold text-[2em] max-md:text-[1.5em]'>Stats</p>
                         <div className="h-5 relative max-w-[100%] rounded-[5px] overflow-hidden mr-10">
                             <div ref={progress} className="w-full h-full bg-gray-200 absolute"></div>
@@ -56,38 +53,38 @@ export default function Page() {
                 </div>
             </div>
 
-            <p className='text-center text-[8em] my-10 font-bold text-[#001623]'>our story</p>
-            <div className='flex flex-col gap-[4em]'>
+            <p className='text-center text-[6em] my-10 font-bold text-[#001623]'>our story</p>
+            <div className='flex flex-col gap-[4em] max-md:items-center'>
                 {
                     startup.stories.map((e, i) => (
-                        <div key={i} className='flex gap-10 '>
+                        <div key={i} className='flex max-md:flex-col max-md:w-[50em] gap-10 p-10 rounded-2xl bg-white md:divide-x max-md:divide-y max-md:items-center'>
                             <img src={e.cover.src} className='w-[300px] rounded-2xl aspect-square' />
-                            <div>
-                                <p>{e.title}</p>
+                            <div className='p-10 grid'>
+                                <p className='font-bold text-[2em]'>{e.title}</p>
                                 <p>{e.disc}</p>
                             </div>
                         </div>)
                     )
                 }
             </div>
-            <p className='text-center text-[8em] my-10 font-bold text-[#001623]'>Comments</p>
-            <div className='flex flex-col gap-[4em]'>
+            <p className='text-center text-[6em] my-10 font-bold text-[#001623]'>Comments</p>
+            <div className='flex flex-col gap-[4em] p-4'>
                 {
                     startup.comments.map((e, i) => (
                         <div key={i} className='border-[1px] border-[#001623] rounded-[15px] p-5'>
                             <div className='flex items-center gap-5'>
-                                <img src={e.user.profilePicture.src} className='w-[80px] rounded-full aspect-square' />
+                                <img src={e.user.profilePicture.src} className='w-[80px] max-md:w-[40px] rounded-full aspect-square' />
                                 <p className='text-[2em] font-bold'>{e.user.userName}</p>
                             </div>
-                            <p className='ml-[80px] text-[1.5em]'>{e.comment}</p>
+                            <p className='ml-[80px] max-md:ml-[40px] text-[1.5em]'>{e.comment}</p>
                             {
                                 e.replies && e.replies.map((e, i) => (
-                                    <div key={i} className='ml-[100px] mt-5 border-[1px] border-[#001623] rounded-[15px] p-5'>
+                                    <div key={i} className='ml-[70px] max-md:ml-[30px] mt-5 border-[1px] border-[#001623] rounded-[15px] p-5'>
                                         <div className='flex items-center gap-5'>
-                                            <img src={e.user.profilePicture.src} className='w-[80px] rounded-full aspect-square' />
+                                            <img src={e.user.profilePicture.src} className='w-[80px] max-md:w-[40px] rounded-full aspect-square' />
                                             <p className='text-[2em] font-bold'>{e.user.userName}</p>
                                         </div>
-                                        <p className='ml-[80px] text-[1.5em]'>{e.comment}</p>
+                                        <p className='ml-[80px] max-md:ml-[30px] text-[1.5em]'>{e.comment}</p>
                                     </div>))
                             }
                         </div>)

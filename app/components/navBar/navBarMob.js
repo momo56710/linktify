@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import linktifyLogoBlck from '@/assets/Linktify Logo alt.png'
+import Link from 'next/link'
 export default function NavBarMob() {
     const [isOpen, setIsOpen] = useState(false);
     const handleClick = () => {
@@ -14,7 +15,7 @@ export default function NavBarMob() {
     return (
         <div className='relative bg-[#F7FBFE]'>
             <div className='px-5 pt-5 flex justify-between '>
-                <div><Image src={linktifyLogoBlck} width={100} /></div>
+            <div><Link href={'/'}><Image src={linktifyLogoBlck} width={100} /></Link> </div>
                 <button onClick={handleClick}
                     className="flex flex-col justify-center items-center">
                     <span className={`bg-[#001623] block transition-all duration-300 ease-out 
@@ -36,7 +37,7 @@ export default function NavBarMob() {
             <div className={`z-[1] absolute transition-all bg-[#F7FBFE] w-[100vw]  duration-500 ease-out ${isOpen ? 'top-[80px]' : 'top-[-400px]'}`}>
                 <div className='justify-self-center  px-5 text-[0.8em]'>
                     <ul className='flex flex-col gap-8 font-bold uppercase pb-2'>
-                        <li>Explore</li>
+                        <Link href={'/explore'}><li>Explore</li></Link>
                         <li>About Us</li>
                         <li>Contact</li>
                         <li>Blog</li>
