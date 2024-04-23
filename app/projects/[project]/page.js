@@ -27,7 +27,7 @@ export default function Page() {
     const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24)) + 1;
     return (
 
-        <div className='max-w-[1600px] m-auto my-10 max-md:text-[10px] md:p-10'>
+        <div className='max-w-[1600px] m-auto my-10 max-md:text-[12px] md:p-10'>
             <div className='flex gap-10 max-md:flex-col bg-white md:p-10 max-md:pb-6 mt-5 md:rounded-2xl'>
                 <img src={startup.logo.src} className='md:w-[50%] max-md:m-auto' />
                 <div className='md:flex-1 my-auto'>
