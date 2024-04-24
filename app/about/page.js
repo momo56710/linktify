@@ -38,7 +38,7 @@ export default function page() {
             <div className='grid md:w-[30vw]'>
               <div>
                 <p className='text-[#2271B9] font-bold uppercase'>our mission</p>
-                <p className='text-[2.5em] font-bold'>Dreams Aflame : Linktify's Mission</p>
+                <p className='text-[2.5em] font-bold'>Dreams Aflame : Linktify&apos;s Mission</p>
               </div>
               <p>At Linktify, our mission is igniting dreams, fueling innovation, fostering connections for transformative success.</p>
               <div className='flex gap-1 items-center'><p>Join our team</p><FaArrowRight className='text-[0.8em]' /></div>
@@ -56,7 +56,7 @@ export default function page() {
             <div className='grid md:w-[30vw]'>
               <div>
                 <p className='text-[#2271B9] font-bold uppercase'>Our product</p>
-                <p className='text-[2.5em] font-bold'>Simplify the startup funding journey with Linktify's intuitive platform</p>
+                <p className='text-[2.5em] font-bold'>Simplify the startup funding journey with Linktify&apos;s intuitive platform</p>
               </div>
               <p>Linktify simplifies startup funding. Our intuitive platform guides you effortlessly, connecting dreams to investors.</p>
               <div className='flex gap-1 items-center'><p>Learn more about the product</p><FaArrowRight className='text-[0.8em]' /></div>
