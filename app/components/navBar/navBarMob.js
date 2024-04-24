@@ -15,7 +15,7 @@ export default function NavBarMob() {
     return (
         <div className='relative bg-[#F7FBFE]'>
             <div className='px-5 pt-5 flex justify-between '>
-            <div><Link href={'/'}><Image src={linktifyLogoBlck} width={100} /></Link> </div>
+                <div><Link href={'/'}><Image src={linktifyLogoBlck} width={100} /></Link> </div>
                 <button onClick={handleClick}
                     className="flex flex-col justify-center items-center">
                     <span className={`bg-[#001623] block transition-all duration-300 ease-out 
@@ -37,22 +37,22 @@ export default function NavBarMob() {
             <div className={`z-[1] absolute transition-all bg-[#F7FBFE] w-[100vw]  duration-500 ease-out ${isOpen ? 'top-[80px]' : 'top-[-400px]'}`}>
                 <div className='justify-self-center  px-5 text-[0.8em]'>
                     <ul className='flex flex-col gap-8 font-bold uppercase pb-2'>
-                        <Link href={'/explore'}><li>Explore</li></Link>
-                        <li>About Us</li>
-                        <li>Contact</li>
-                        <li>Blog</li>
+                        <Link href={'/explore'} onClick={() => (setIsOpen(false))}><li>Explore</li></Link>
+                        <Link href={'/about'} onClick={() => (setIsOpen(false))}><li>About Us</li></Link>
+                        <Link href={'/contact'} onClick={() => (setIsOpen(false))}><li>Contact</li></Link>
+                        <Link href={'/blog'} onClick={() => (setIsOpen(false))}><li>Blog</li></Link>
                     </ul>
                     <hr />
                     <div className='flex gap-5 pb-5 content-center text-[0.8em] pt-2 items-center justify-self-end mr-[2em] font-bold uppercase'>
-                        <span className='bg-[#001623] text-white  py-1.5 px-3 rounded-[80px]'>Sign Up</span>
-                        <span className='py-3 px-6'>Login</span>
+                    <Link href={'/login'} onClick={() => (setIsOpen(false))}><span className='bg-[#001623] text-white  py-1.5 px-3 rounded-[80px]'>login</span></Link>
+                    <Link href={'/projects/start'} onClick={() => (setIsOpen(false))}><span className='py-3 px-6'>start a project</span></Link>
 
                     </div>
                 </div>
 
 
             </div>
-            <div className={` transition-all w-[100vw] h-[100vh]  left-0 bg-[#00000050] absolute  duration-[500ms] ease-out ${isOpen ? 'top-[10em]' : 'top-[-110vh]'}`}></div>
+            <div className={` transition-all w-[100vw] h-[100vh]  left-0 bg-[#00000050] absolute  duration-[500ms] ease-out ${isOpen ? 'top-[10em]' : 'top-[-110vh]'}`} onClick={() => (setIsOpen(false))}></div>
         </div>
     )
 }

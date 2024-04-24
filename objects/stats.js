@@ -4,17 +4,17 @@ import likeIcn from '@/assets/Icons/Like.png'
 export const stats = [
     {
         'icon': dollarSign,
-        'number': '253.586',
+        'number': '253586',
         'disc': 'Projects Funded'
     },
     {
         'icon': eyeIcn,
-        'number': '200.092$',
+        'number': '200092$',
         'disc': 'Towards creative work'
     },
     {
         'icon': likeIcn,
-        'number': '93.022',
+        'number': '93022',
         'disc': 'Pledges'
     }
 ]
