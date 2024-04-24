@@ -20,12 +20,12 @@ export default function page() {
       <div className='grid grid-cols-3 gap-10 max-w-[1000px] m-auto my-10'>
         {
           iamges.map((e, i) => (
-            <img className=' rounded-2xl aspect-square' key={i} src={e.src} />
+            <img key={i} className=' rounded-2xl aspect-square' src={e.src} />
           ))
         }
         {
           stats.map((e, i) => (
-            <div className='p-5 bg-white rounded-2xl'>
+            <div key={i} className='p-5 bg-white rounded-2xl'>
               <p className='text-center text-[2em] font-bold text-[#2271B9]'>{e.number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",").toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}+</p>
               <p className='text-center font-bold'>{e.disc}</p>
             </div>
@@ -87,7 +87,7 @@ export default function page() {
         <p className='text-center text-[2.5em] font-bold'>Loved by industry leaders.</p>
         <div className='flex justify-around my-10 gap-10 flex-wrap'>
           {
-            Testimonials.map(e => (<TestominialCard testimonial={e.testimonial} writer={e.writer} />))
+            Testimonials.map((e,i) => (<TestominialCard key={i} testimonial={e.testimonial} writer={e.writer} />))
           }
         </div>
       </div>
