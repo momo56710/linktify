@@ -8,7 +8,7 @@ import MetricsCard from "./components/metricsCard";
 import NextBigMove from "./components/nextBigMove";
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center p-24  font-bold">
+    <main className="flex min-h-screen flex-col items-center py-24  font-bold">
       <div className="flex flex-col max-md:flex-col-reverse">
         <div>
           <p className="max-md:text-[2em] mt-10  text-[3em] bg-gradient-to-r from-[#1F73D4] via-[#7C39D4] to-[#1F73D4] bg-clip-text text-transparent text-center">Never start from zero again.</p>

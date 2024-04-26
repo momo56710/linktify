@@ -91,7 +91,7 @@ export default function page() {
           }
         </div>
       </div>
-      <div className='my-10'><NextBigMove/></div>
+      <div className='my-10 max-md:px-10'><NextBigMove/></div>
       
     </div>
   )

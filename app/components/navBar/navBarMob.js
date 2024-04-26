@@ -15,7 +15,7 @@ export default function NavBarMob() {
     return (
         <div className='relative bg-[#F7FBFE]'>
             <div className='px-5 pt-5 flex justify-between '>
-                <div><Link href={'/'}><Image src={linktifyLogoBlck} width={100} /></Link> </div>
+                <div><Link href={'/'} onClick={() => (setIsOpen(false))}><Image src={linktifyLogoBlck} width={100} /></Link> </div>
                 <button onClick={handleClick}
                     className="flex flex-col justify-center items-center">
                     <span className={`bg-[#001623] block transition-all duration-300 ease-out 
