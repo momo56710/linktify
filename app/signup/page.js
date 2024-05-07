@@ -5,7 +5,7 @@ import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { auth } from '@/utils/firebase'
 import { useRouter } from 'next/navigation'
 import { signOut, updateProfile } from 'firebase/auth'
-export default function page() {
+export default function Page() {
     const router = useRouter()
     const [name, setName] = useState('')
     const [warning, setWarning] = useState('')
