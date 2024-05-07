@@ -2,6 +2,7 @@
 import { startups } from '@/objects/startups';
 import { usePathname } from 'next/navigation'
 import React, { useRef, useEffect, useState } from 'react'
+import axios from 'axios';
 export default function Page() {
     //getting startup
     let startup
@@ -13,7 +14,20 @@ export default function Page() {
     console.log(percentage)
     // comapring percentage to progress bar
     const [barWidth, setBarWidth] = useState(0)
-
+    const slickPayTest = () => {
+        axios.post('https://devapi.slick-pay.com/api/v2/users/transfers/commission', { "amount": 1000, }, {
+            headers: {
+                "Accept": "application/json",
+                "Authorization": `Bearer 1130|wKJymsDNwSpp6zebXH7KeYfVnmPREXuLUk0r6bvdbe059959`
+            }
+        })
+            .then((result) => {
+                let response = result.data;
+                console.log(response);
+            }).catch((error) => {
+                console.log(error);
+            });
+    }
     const progress = useRef();
     useEffect(() => {
         progress.current ? setBarWidth(progress.current.offsetWidth) : setBarWidth(0)
@@ -46,7 +60,7 @@ export default function Page() {
                             <p className='mt-5 text-[1.5em] font-bold'>{days}</p>
                             <p>days to go</p>
                             <div className='flex gap-4 justify-center items-center mt-5 max-md:flex-col'>
-                                <p className='bg-[#000218] text-white px-5 py-3 font-bold rounded-full uppercase max-md:w-full text-center'>Back this project</p>
+                                <p className='bg-[#000218] text-white px-5 py-3 font-bold rounded-full uppercase max-md:w-full text-center' onClick={() => { slickPayTest() }}>Back this project</p>
                                 <p className='bg-[#E7EBF2] text-[#000218] px-5 py-3 font-bold rounded-full uppercase max-md:w-full text-center'>share</p>
                             </div>
                         </div>

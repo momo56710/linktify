@@ -3,6 +3,7 @@ import "./globals.css";
 import NavBarDes from "./components/navBar/navBarDes";
 import FooterDes from "./components/footer/footerDes";
 import NavBarMob from "./components/navBar/navBarMob";
+import Checkuser from "./components/user";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,6 +13,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  
   return (
     <html lang="en">
       <body className={`${inter.className} bg-[#F7FBFE]`} >

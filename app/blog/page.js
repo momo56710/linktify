@@ -21,7 +21,7 @@ export default function page() {
       </div>
       <div className='max-w-[1600px] m-auto'>
         <p className='p-10 font-bold text-[#001623] text-[2em]'>All posts</p>
-        <div className='flex flex-wrap gap-5'>
+        <div className='flex flex-wrap gap-5 justify-center'>
         {
           posts.map((e,i)=>(<PostCard key={i} post={e}/>))
         }

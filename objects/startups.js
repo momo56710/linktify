@@ -43,6 +43,11 @@ export const startups = [
                 'title': 'Crafting the Future',
                 'disc': "Join us on this journey towards a world where every tech innovation contributes to a brighter tomorrow. Together, we can craft a future that seamlessly integrates technology into our lives — one TechVent at a time."
             },
+            {
+                'cover': techVentStory3,
+                'title': 'Crafting the Future',
+                'disc': "Join us on this journey towards a world where every tech innovation contributes to a brighter tomorrow. Together, we can craft a future that seamlessly integrates technology into our lives — one TechVent at a time."
+            },
         ],
         'comments': [
             {
