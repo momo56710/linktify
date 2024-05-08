@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { auth } from '@/utils/firebase'
@@ -10,6 +10,8 @@ export default function Login() {
   const [warning, setWarning] = useState('')
   const router = useRouter()
   const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth)
+
+  
   const handleSignIn = async () => {
     if (email == '' || password == '') {
       setWarning("don't leave inputs empty")

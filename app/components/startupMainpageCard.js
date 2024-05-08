@@ -4,7 +4,7 @@ import Link from 'next/link'
 export default function StartupMainpageCard({ img, title, disc }) {
     return (
         <div className='flex max-md:flex-col justify-around items-center gap-10 m-auto max-w-[1440px]  max-md:bg-[#E6E3F2] max-md:p-5 rounded-[20px]'>
-            <div className='flex-1'><img src={img.src}
+            <div className='flex-1'><img src={img}
                 className='rounded-[20px] max-md:w-[80vw] w-[80%] ml-auto' /></div>
 
 

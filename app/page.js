@@ -1,4 +1,4 @@
-// 'use client'
+'use client'
 import StatsCard from "./components/statsCard";
 import StartupMainpageCard from "./components/startupMainpageCard";
 import { stats } from '@/objects/stats';
@@ -7,16 +7,24 @@ import { startups } from "@/objects/startups";
 import { metrics } from "@/objects/metrics";
 import MetricsCard from "./components/metricsCard";
 import NextBigMove from "./components/nextBigMove";
-import { getServerSideProps } from 'next/server';
+import { fetchDataFromFireStore } from "@/utils/startups";
+import { useEffect, useState } from "react";
+export default function Home() {
 
-// import { useEffect } from "react";
+  const [strtups, setStartups] = useState([])
+  useEffect(() => {
+    async function fetchData() {
+      const data = await fetchDataFromFireStore()
+      setStartups(data)
+    }
+    fetchData()
+  }, [])
 
-export default async function Home(props) {
+  console.log(strtups)
 
-
- 
   return (
     <>
+
       <main className="flex min-h-screen flex-col items-center py-24  font-bold m-10">
 
         <div className="flex flex-col max-md:flex-col-reverse">
@@ -53,7 +61,7 @@ export default async function Home(props) {
         </div>
         <div className="grid gap-[2em] mt-[5em]">
           {
-            startups.map((e, i) => (
+            strtups.map((e, i) => (
               <StartupMainpageCard key={i} img={e.logo} title={e.title} disc={e.disc} />
             ))
           }
