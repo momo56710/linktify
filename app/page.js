@@ -55,7 +55,6 @@ export default function Home() {
         <div className="md:mt-[5em] flex flex-col gap-[2em] justify-center items-center">
           <p className="md:w-[30em] w-[90vw] md:m-auto text-center leading-8 text-[#858694]">Empowering startups with financial fuel, ensuring they never restart from ground zero again</p>
           <div className="flex max-md:flex-col md:justify-center w-[90vw] text-center gap-[1em] md:gap-[2em] uppercase text-[14px]">
-            <Link href={'/signup'} className="bg-[#001623] text-white py-3 px-6 rounded-[80px]">Sign up now</Link>
             <Link href={'/explore'} className="border-[#c4c4c4] border-[2px] border-solid py-3 px-6 rounded-[80px]">Explore</Link>
           </div>
         </div>

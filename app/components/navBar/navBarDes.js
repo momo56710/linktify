@@ -3,7 +3,6 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import linktifyLogoBlck from '@/assets/Linktify Logo alt.png'
-import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from "@/utils/firebase";
 import pfp1 from '@/assets/users/amine.png'
 import pfp2 from '@/assets/users/khaoula.png'
@@ -50,7 +49,6 @@ export default function NavBarDes() {
             </div>
             {
                 option && <div className='flex gap-5 content-center items-center justify-self-end mr-[2em] '>
-                    <Link href={'/projects/start'}> <span className=' py-3 px-6 uppercase font-bold'>start a project</span></Link>
                     {isLoading ? '' :
                         user ? <Link href={'/user-profile'}>
                             <img src={pfps[Math.floor(Math.random() * (8 - 0 + 1) + 0)].src} className='w-[4em]' alt="amine" border="0" />
