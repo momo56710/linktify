@@ -19,12 +19,11 @@ export default function Login() {
     else {
       try {
         const res = await signInWithEmailAndPassword(email, password)
-        console.log(res)
         setEmail('')
         setPassword('')
         router.push('/')
       } catch (e) {
-        console.error(e)
+        
       }
     }
   }

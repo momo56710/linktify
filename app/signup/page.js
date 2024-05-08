@@ -24,19 +24,18 @@ export default function Page() {
         }
         else {
             try {
-                console.log(email)
-                console.log(password)
+             
                 const res = await createUserWithEmailAndPassword(email, password)
                 const user = res.user
                 await updateProfile(user, { displayName: name, photoURL: profession })
-                console.log({ res })
+             
                 setEmail('')
                 setPassword('')
                 setName('')
                 signOut(auth)
                 router.push('/login')
             } catch (e) {
-                console.error(e)
+              
             }
         }
     }

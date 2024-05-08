@@ -18,7 +18,6 @@ export default function NavBarDes() {
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const pathname = usePathname()
-    console.log(pathname)
     const [option, setOption] = useState(true)
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((fetchedUser) => {

@@ -11,7 +11,7 @@ export default function Page() {
     startups.map(e => (e.title.replaceAll(' ', '-').toLowerCase() == pathName ? startup = e : ''))
     // getting funding percentage
     const percentage = Math.trunc(Number(startup.funded) * 100 / Number(startup.goal))
-    console.log(percentage)
+
     // comapring percentage to progress bar
     const [barWidth, setBarWidth] = useState(0)
     const slickPayTest = () => {
@@ -23,9 +23,9 @@ export default function Page() {
         })
             .then((result) => {
                 let response = result.data;
-                console.log(response);
+             
             }).catch((error) => {
-                console.log(error);
+           
             });
     }
     const progress = useRef();
@@ -34,7 +34,7 @@ export default function Page() {
     }, [progress.current]);
     // caluculating remaining days
     const targetDate = new Date(startup.deadline).toISOString();
-    console.log(targetDate)
+
     const now = new Date().getTime()
     const targetTime = new Date(targetDate).getTime()
     const timeRemaining = targetTime - now
