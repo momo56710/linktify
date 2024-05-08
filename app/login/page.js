@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { auth } from '@/utils/firebase'
 import { useRouter } from 'next/navigation'
+import { Loader } from '../components/loader'
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -11,19 +12,21 @@ export default function Login() {
   const router = useRouter()
   const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth)
 
-  
+  const [isLoading, setIsLoading] = useState(false);
   const handleSignIn = async () => {
     if (email == '' || password == '') {
       setWarning("don't leave inputs empty")
     }
     else {
+      setIsLoading(true)
       try {
         const res = await signInWithEmailAndPassword(email, password)
-        setEmail('')
-        setPassword('')
-        router.push('/')
+        res ? router.push('/') : setWarning("inforamtions don't match any account")
+        setIsLoading(false)
       } catch (e) {
-        
+        document.querySelectorAll('input').forEach(e => e.value = '')
+        setWarning("inforamtions don't match any account")
+        setIsLoading(false)
       }
     }
   }
@@ -39,7 +42,7 @@ export default function Login() {
               forgot your password ?
             </p>
           </div>
-          <p className='bg-[#2271B9] text-white text-center cursor-pointer rounded-md py-2' onClick={e => { handleSignIn() }}>Log in</p>
+          <p className='bg-[#2271B9] text-white text-center cursor-pointer rounded-md py-2 grid place-content-center' onClick={e => { handleSignIn() }}>{isLoading ? <Loader /> : 'Log in'}</p>
           <p>{warning}</p>
           <div className='flex items-center gap-2'>
             <input type='checkbox' />

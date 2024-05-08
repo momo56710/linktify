@@ -15,6 +15,8 @@ import pfp8 from '@/assets/users/walid.png'
 import pfp9 from '@/assets/users/youcef.png'
 import { usePathname } from 'next/navigation'
 export default function NavBarDes() {
+    
+    
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const pathname = usePathname()
