@@ -5,15 +5,8 @@ import linktifyLogoBlck from '@/assets/Linktify Logo alt.png'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { auth } from '@/utils/firebase'
-import pfp1 from '@/assets/users/amine.png'
-import pfp2 from '@/assets/users/khaoula.png'
-import pfp3 from '@/assets/users/loubna.png'
-import pfp4 from '@/assets/users/nadjib.png'
-import pfp5 from '@/assets/users/nardjess.png'
-import pfp6 from '@/assets/users/rania.png'
-import pfp7 from '@/assets/users/salma.png'
-import pfp8 from '@/assets/users/walid.png'
-import pfp9 from '@/assets/users/youcef.png'
+import pfp from '@/assets/users/amine.png'
+
 export default function NavBarMob() {
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -33,7 +26,7 @@ export default function NavBarMob() {
         return () => unsubscribe();
     }, [pathname, auth])
 
-    const pfps = [pfp1, pfp2, pfp3, pfp4, pfp5, pfp6, pfp7, pfp8, pfp9]
+    
     const [isOpen, setIsOpen] = useState(false);
     const handleClick = () => {
         setIsOpen(!isOpen);
@@ -44,7 +37,7 @@ export default function NavBarMob() {
 
     return (
         <div className='relative bg-[#F7FBFE]'>
-            <div className='px-5 pt-5 flex justify-between '>
+            <div className='px-5 pt-5 flex justify-between items-center'>
                 <div><Link href={'/'} onClick={() => (setIsOpen(false))}><Image src={linktifyLogoBlck} width={100} /></Link> </div>
                 <button onClick={handleClick}
                     className="flex flex-col justify-center items-center">
@@ -67,7 +60,7 @@ export default function NavBarMob() {
                     option && <div className='flex content-center text-[0.8em]  items-center justify-self-end mr-[2em] font-bold uppercase'>
                         {
                             isLoading ? " " : user ? <Link href={'/user-profile'}>
-                                <img src={pfps[Math.floor(Math.random() * (8 - 0 + 1) + 0)].src} className='w-[4em]' alt="amine" border="0" /> </Link> : <Link href={'/login'} onClick={() => (setIsOpen(false))}><span className='bg-[#001623] text-white  py-1.5 px-3 rounded-[80px]'>login</span></Link>
+                                <img src={pfp.src} className='w-[4em]' alt="amine" border="0" /> </Link> : <Link href={'/login'} onClick={() => (setIsOpen(false))}><span className='bg-[#001623] text-white  py-1.5 px-3 rounded-[80px]'>login</span></Link>
                         }
 
 

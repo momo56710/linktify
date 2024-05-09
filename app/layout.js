@@ -3,7 +3,6 @@ import "./globals.css";
 import NavBarDes from "./components/navBar/navBarDes";
 import FooterDes from "./components/footer/footerDes";
 import NavBarMob from "./components/navBar/navBarMob";
-import Checkuser from "./components/user";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +18,6 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className} bg-[#F7FBFE]`} >
         <div className="max-md:hidden"> <NavBarDes /></div>
         <div className="md:hidden"> <NavBarMob /> </div>
-
         {children}
         <FooterDes />
 

@@ -2,21 +2,12 @@
 import { auth } from '@/utils/firebase';
 import { signOut } from 'firebase/auth';
 import React, { useState, useEffect } from 'react';
-import pfp1 from '@/assets/users/amine.png'
-import pfp2 from '@/assets/users/khaoula.png'
-import pfp3 from '@/assets/users/loubna.png'
-import pfp4 from '@/assets/users/nadjib.png'
-import pfp5 from '@/assets/users/nardjess.png'
-import pfp6 from '@/assets/users/rania.png'
-import pfp7 from '@/assets/users/salma.png'
-import pfp8 from '@/assets/users/walid.png'
-import pfp9 from '@/assets/users/youcef.png'
+import pfp from '@/assets/users/amine.png'
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 export default function Page() {
   const router = useRouter()
   const [user, setUser] = useState(null);
-  const pfps = [pfp1, pfp2, pfp3, pfp4, pfp5, pfp6, pfp7, pfp8, pfp9]
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((fetchedUser) => {
@@ -31,7 +22,7 @@ export default function Page() {
         user ? (
           <div className='bg-white p-10 flex flex-col gap-5 shadow-xl rounded-xl'>
             <div className=' flex max-md:flex-col content-between gap-10 max-md:w-[60vw] md:divide-x max-md:divide-y'>
-              <img src={pfps[Math.floor(Math.random() * (8 - 0 + 1) + 0)].src} className='max-md:w-[100px] max-md:m-auto' />
+              <img src={pfp.src} className='max-md:w-[100px] max-md:m-auto' />
               <div className='pl-5 grid py-4'><p className='text-[2em] font-bold max-md:text-center'> {user.displayName}</p>
                 <p className='max-md:text-center'> {user.photoURL}</p>
               </div>

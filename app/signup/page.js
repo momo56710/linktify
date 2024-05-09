@@ -1,10 +1,10 @@
 'use client'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { auth } from '@/utils/firebase'
 import { useRouter } from 'next/navigation'
-import { signOut, updateProfile } from 'firebase/auth'
+import {  updateProfile } from 'firebase/auth'
 import { Loader } from '../components/loader'
 export default function Page() {
     const router = useRouter()

@@ -4,15 +4,7 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import linktifyLogoBlck from '@/assets/Linktify Logo alt.png'
 import { auth } from "@/utils/firebase";
-import pfp1 from '@/assets/users/amine.png'
-import pfp2 from '@/assets/users/khaoula.png'
-import pfp3 from '@/assets/users/loubna.png'
-import pfp4 from '@/assets/users/nadjib.png'
-import pfp5 from '@/assets/users/nardjess.png'
-import pfp6 from '@/assets/users/rania.png'
-import pfp7 from '@/assets/users/salma.png'
-import pfp8 from '@/assets/users/walid.png'
-import pfp9 from '@/assets/users/youcef.png'
+import pfp from '@/assets/users/amine.png'
 import { usePathname } from 'next/navigation'
 export default function NavBarDes() {
     
@@ -34,7 +26,7 @@ export default function NavBarDes() {
         return () => unsubscribe();
     }, [pathname, auth])
 
-    const pfps = [pfp1, pfp2, pfp3, pfp4, pfp5, pfp6, pfp7, pfp8, pfp9]
+   
 
 
     return (
@@ -52,7 +44,7 @@ export default function NavBarDes() {
                 option && <div className='flex gap-5 content-center items-center justify-self-end mr-[2em] '>
                     {isLoading ? '' :
                         user ? <Link href={'/user-profile'}>
-                            <img src={pfps[Math.floor(Math.random() * (8 - 0 + 1) + 0)].src} className='w-[4em]' alt="amine" border="0" />
+                            <img src={pfp.src} className='w-[4em]' alt="amine" border="0" />
                         </Link> : <Link href={'/login'} className='bg-[#001623] text-white py-3 px-6 rounded-[80px] uppercase font-bold'>Login</Link>}
                 </div>
             }

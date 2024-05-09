@@ -3,7 +3,6 @@ import StatsCard from "./components/statsCard";
 import StartupMainpageCard from "./components/startupMainpageCard";
 import { stats } from '@/objects/stats';
 import Link from "next/link";
-import { startups } from "@/objects/startups";
 import { metrics } from "@/objects/metrics";
 import MetricsCard from "./components/metricsCard";
 import NextBigMove from "./components/nextBigMove";
@@ -61,7 +60,7 @@ export default function Home() {
         <div className="grid gap-[2em] mt-[5em]">
           {
             strtups.map((e, i) => (
-              <StartupMainpageCard key={i} img={e.logo} title={e.title} disc={e.disc} />
+              <StartupMainpageCard key={i} img={e.logo} title={e.title} disc={e.shortDisc} />
             ))
           }
 
