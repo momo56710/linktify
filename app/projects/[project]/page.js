@@ -5,6 +5,7 @@ import React, { useRef, useEffect, useState } from 'react'
 import { fetchDataFromFireStore } from "@/utils/startups";
 import axios from 'axios';
 export default function Page() {
+    var pathName = usePathname();
     const [startups, setStartups] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [barWidth, setBarWidth] = useState(0)
@@ -22,7 +23,7 @@ export default function Page() {
     if (isLoading) { return <div>loading...</div> }
     //getting startup
     let startup
-    var pathName = usePathname();
+
     pathName = pathName.replace('/projects/', '')
     startups.map(e => (e.title.replaceAll(' ', '-').toLowerCase() == pathName ? startup = e : ''))
     // getting funding percentage
@@ -82,7 +83,7 @@ export default function Page() {
                     </div>
 
                 </div>
-             
+
             </div>
             <p className='text-center text-[6em] my-10 font-bold text-[#001623]'>our story</p>
             <div className='flex flex-col gap-[4em]  max-md:items-center'>
