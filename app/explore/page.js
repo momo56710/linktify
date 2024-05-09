@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import ExploreStartupsCard from './componenets/exploreStartupsCard'
 import { fetchDataFromFireStore } from '@/utils/startups'
-export default function page() {
+export default function Page() {
     const [startups, setStartups] = useState([])
     const [isLoading,setIsLoading] = useState(true)
   useEffect(() => {
