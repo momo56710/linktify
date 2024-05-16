@@ -60,6 +60,7 @@ export default function Home() {
         <div className="grid gap-[2em] mt-[5em]">
           {
             strtups.map((e, i) => (
+              e.recommended &&
               <StartupMainpageCard key={i} img={e.logo} title={e.title} disc={e.shortDisc} />
             ))
           }

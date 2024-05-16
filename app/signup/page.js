@@ -6,6 +6,7 @@ import { auth } from '@/utils/firebase'
 import { useRouter } from 'next/navigation'
 import {  updateProfile } from 'firebase/auth'
 import { Loader } from '../components/loader'
+import { toast } from 'react-toastify'
 export default function Page() {
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +40,7 @@ export default function Page() {
                 setEmail('')
                 setPassword('')
                 setName('')
-
+                toast(`${name} created!`)
                 router.push('/login')
                 setIsLoading(false)
             } catch (e) {

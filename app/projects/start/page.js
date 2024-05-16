@@ -4,14 +4,18 @@ import { db } from '@/utils/firebase'
 import { addDoc, collection } from 'firebase/firestore';
 import { Loader } from '@/app/components/loader';
 import { useRouter } from 'next/navigation';
+import { auth } from '@/utils/firebase'
+import { toast } from 'react-toastify';
 
 // Import your initialized Firebase instance
 
 export default function Page() {
   const router = useRouter()
-  const [loading, isLoading] = useState(false)
+  const [user, setUser] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [isloading, setIsLoading] = useState(true)
   const [warning, setWarning] = useState('')
-  const [storiesArr, setStoriesArr] = useState([{ cover: '', title: '', disc: '' }])
+  const [storiesArr, setStoriesArr] = useState([{ cover: 'https://i.ibb.co/nB8RBgk/GD6-KM-m-Wk-AATLg9.png', title: '', disc: '' }])
   const [postData, setPostData] = useState(
     {
       title: '',
@@ -20,16 +24,24 @@ export default function Page() {
       disc: '',
       funded: 0,
       goal: 0,
-      logo: 'https://i.ibb.co/M5QzsGt/logo.jpg',
+      logo: 'https://i.ibb.co/nB8RBgk/GD6-KM-m-Wk-AATLg9.png',
       shortDisc: '',
       stories: [],
+      owner: '',
+      verified: false,
+      recommended: false
     });
   useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((fetchedUser) => {
+      setUser(fetchedUser);
+      setIsLoading(false) // Update user state on auth state change
+    });
     setPostData({ ...postData, stories: storiesArr })
   }, [storiesArr])
+  console.log(user)
   function verifyStories(story) {
     var isfilled = true
-    const reqStory = ['cover', 'title', 'disc']
+    const reqStory = ['title', 'disc']
     story.forEach(e => {
       for (const field in e) {
         if (reqStory.includes(field) && (e[field] === '' || e[field] === 0)) {
@@ -71,7 +83,7 @@ export default function Page() {
   const handleAddStory = () => {
     // Create a new story object with relevant fields
     const newStory = {
-      cover: '',
+      cover: 'https://i.ibb.co/nB8RBgk/GD6-KM-m-Wk-AATLg9.png',
       title: '', // Placeholder for story cover image URL (optional)
       disc: '', // Placeholder for story description
     };
@@ -103,9 +115,10 @@ export default function Page() {
   };
   const [error, setError] = useState(null);
   const handleSubmit = async () => {
-    isLoading(true)
+
+    setLoading(true)
     if (isDataFilled(postData) != true || verifyStories(storiesArr) != true) {
-      isLoading(false)
+      setLoading(false)
       if (isDataFilled(postData) != true) { setWarning(isDataFilled(postData)) }
       if (verifyStories(storiesArr) != true) { setWarning(verifyStories(storiesArr)) }
       console.log(warning)
@@ -113,35 +126,38 @@ export default function Page() {
     } else {
       try {
 
+        console.log(postData)
         const collectionRef = collection(db, 'startups')
-        const response = await addDoc(collectionRef, { ...postData }); // Add document with data
+        const response = await addDoc(collectionRef, { ...postData, owner: { id: user.uid, name: user.displayName, email: user.email, profeesion: user.photoURL } }); // Add document with data
         console.log('Document written with ID:', response.id); // Clear form after successful post
         setError(null);
-        isLoading(false)
+        setLoading(false)
+        toast("startup created and getiing verified")
         router.push('/')
       } catch (error) {
         console.error('Error adding document: ', error);
         setError(error.message);
-        isLoading(false)
+        setLoading(false)
       }
     }
   };
-
+  if (isloading) { return <h1>Loading...</h1> }
   return (
     <div className='mt-10'>
       <p className='text-[#2271B9] text-[3em] text-center font-bold'>Start a project</p>
       <div className='flex flex-col gap-4 w-[80vw] m-auto p-10 my-10 bg-white rounded-xl'>
         <div className='flex flex-col gap-3'>
           <p className='font-bold text-[1.5em]'>project logo</p>
-          <input type='text' placeholder='imageURL' className='border bg-transparent p-3 rounded-[10px] ' onChange={e => setPostData({ ...postData, logo: e.target.value })} />
+          <input type='text' disabled className='border bg-transparent p-3 rounded-[10px] ' value={'https://i.ibb.co/nB8RBgk/GD6-KM-m-Wk-AATLg9.png'} onChange={e => setPostData({ ...postData, logo: e.target.value })} />
         </div>
         <div className='flex flex-col gap-3'>
           <p className='font-bold text-[1.5em]'>project name</p>
           <input type='text' placeholder='Title' className='border bg-transparent p-3 rounded-[10px] ' onChange={e => setPostData({ ...postData, title: e.target.value })} />
         </div>
         <div className='flex flex-col gap-3'>
-          <p className='font-bold text-[1.5em]'>Short Description</p>
+          <p className='font-bold text-[1.5em]'>Project idea</p>
           <textarea
+            placeholder='will be on the startup card '
             className='border bg-transparent p-3 rounded-[10px] '
             onChange={(e) => setPostData({ ...postData, shortDisc: e.target.value })}
           />
@@ -149,6 +165,7 @@ export default function Page() {
         <div className='flex flex-col gap-3'>
           <p className='font-bold text-[1.5em]'>Description</p>
           <textarea
+            placeholder='wil be on startup page'
             className='border bg-transparent p-3 rounded-[10px] '
             onChange={(e) => setPostData({ ...postData, disc: e.target.value })}
           />
@@ -157,7 +174,8 @@ export default function Page() {
           <p className='font-bold text-[1.5em]'>Goal (Amount)</p>
           <input
             type='number'
-            className='border bg-transparent p-3 rounded-[10px] '
+            placeholder='needs to be a round number with atleast "000" in the end'
+            className='border bg-transparent p-3 rounded-[10px] number-no-arrows appearance-none form-input'
             onChange={(e) => setPostData({ ...postData, goal: e.target.value })}
           />
         </div>
@@ -177,10 +195,10 @@ export default function Page() {
             <div key={index} className='flex flex-col gap-3 mb-2 border p-3 rounded-md'>
               <input
                 type='text'
-                placeholder='Story Cover URL (1080x1080)'
+                disabled
                 className='border bg-transparent p-2 rounded-[5px] mb-2'
                 name='cover'
-                value={story.cover}
+                value={'https://i.ibb.co/nB8RBgk/GD6-KM-m-Wk-AATLg9.png'}
                 onChange={(event) => handleStoryChange(event, index)}
               />
               <input
@@ -198,12 +216,15 @@ export default function Page() {
                 value={story.disc}
                 onChange={(event) => handleStoryChange(event, index)}
               />
-              <button
-                className='bg-red-500 hover:bg-red-700 text-white p-2 rounded-md mt-2'
-                onClick={() => handleRemoveStory(index)}
-              >
-                Remove Story
-              </button>
+              {
+                index == 0 ? '' : <button
+                  className='bg-red-500 hover:bg-red-700 text-white p-2 rounded-md mt-2'
+                  onClick={() => handleRemoveStory(index)}
+                >
+                  Remove Story
+                </button>
+              }
+
 
             </div>
 
@@ -214,7 +235,7 @@ export default function Page() {
         </div>
         <p onClick={() => {
           handleSubmit()
-        }} className='bg-blue-500 cursor-pointer hover:bg-blue-600 text-white gird place-content-center p-2 rounded-md mb-2 text-center'>
+        }} className='bg-blue-500 cursor-pointer  hover:bg-blue-600 text-white gird place-content-center p-2 rounded-md mb-2 text-center'>
           {loading ? <Loader /> : 'submit'}</p>
         <p>{warning}</p>
       </div>

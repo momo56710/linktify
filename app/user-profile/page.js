@@ -17,7 +17,7 @@ export default function Page() {
     return () => unsubscribe();
   }, [auth]);
   return (
-    <div className='min-h-[80vh] grid place-content-center '>
+    <div className='min-h-[80vh] my-10 grid place-content-center '>
       {isLoading ? <div>Loading...</div> :
         user ? (
           <div className='bg-white p-10 flex flex-col gap-5 shadow-xl rounded-xl'>

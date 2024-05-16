@@ -1,10 +1,11 @@
 'use client'
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { auth } from '@/utils/firebase'
 import { useRouter } from 'next/navigation'
 import { Loader } from '../components/loader'
+import { toast } from 'react-toastify'
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -21,7 +22,11 @@ export default function Login() {
       setIsLoading(true)
       try {
         const res = await signInWithEmailAndPassword(email, password)
-        res ? router.push('/') : setWarning("inforamtions don't match any account")
+        if (res) {
+          router.push('/')
+          toast('welcome back')
+        }
+        else { setWarning("inforamtions don't match any account") }
         setIsLoading(false)
       } catch (e) {
         document.querySelectorAll('input').forEach(e => e.value = '')

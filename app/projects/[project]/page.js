@@ -1,13 +1,24 @@
 'use client'
-
 import { usePathname } from 'next/navigation'
 import React, { useRef, useEffect, useState } from 'react'
 import { fetchDataFromFireStore } from "@/utils/startups";
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import { ImCross } from "react-icons/im";
+import Popup from 'reactjs-popup';
+import { auth, db } from '@/utils/firebase'
+import { toast } from 'react-toastify';
+import ProgressBar from "@ramonak/react-progress-bar";
+import { doc, updateDoc } from 'firebase/firestore';
+import { Loader } from '@/app/components/loader';
 export default function Page() {
+    const router = useRouter()
     var pathName = usePathname();
+    const [backingAmount, setBackingAmount] = useState(0)
+    const [user, setUser] = useState('')
     const [startups, setStartups] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [Loading, setLoading] = useState(false)
     const [barWidth, setBarWidth] = useState(0)
     const progress = useRef();
     useEffect(() => {
@@ -16,30 +27,55 @@ export default function Page() {
             setStartups(data)
             setIsLoading(false)
         }
+        const unsubscribe = auth.onAuthStateChanged((fetchedUser) => {
+            setUser(fetchedUser);
+            // Update user state on auth state change
+        });
         fetchData()
         progress.current ? setBarWidth(progress.current.offsetWidth) : setBarWidth(0)
     }, [progress.current])
-    console.log(startups)
+    console.log(user)
     if (isLoading) { return <div>loading...</div> }
     //getting startup
     let startup
 
     pathName = pathName.replace('/projects/', '')
     startups.map(e => (e.title.replaceAll(' ', '-').toLowerCase() == pathName ? startup = e : ''))
+    console.log(startup);
     // getting funding percentage
     const percentage = Math.trunc(Number(startup.funded) * 100 / Number(startup.goal))
-
+    console.log(percentage)
     // comapring percentage to progress bar
-
-    const slickPayTest = () => {
-        axios.post('https://devapi.slick-pay.com/api/v2/users/transfers/commission', { "amount": 1000, }, {
+    const handleBacker = async () => {
+        setLoading(true)
+        console.log(startup.backers)
+        startup.backers.push({ backer: { name: user.displayName, email: user.email }, amount: backingAmount })
+        startup.funded = Number(startup.funded) + Number(backingAmount)
+        console.log(startup.id)
+        try {
+            const docRef = doc(db, 'startups', startup.id);
+            await updateDoc(docRef, startup);
+            slickPayTest(backingAmount)
+            console.log('Document updated successfully');
+        } catch (error) {
+            console.error('Error updating document:', error);
+        }
+    }
+    const slickPayTest = (amount) => {
+        axios.post("https://prodapi.slick-pay.com/api/v2/users/transfers", {
+            "amount": amount,
+            "url": "",
+        }, {
             headers: {
-                "Accept": "application/json",
-                "Authorization": `Bearer 1130|wKJymsDNwSpp6zebXH7KeYfVnmPREXuLUk0r6bvdbe059959`
+                "Accept": 'application/json',
+                "Authorization": `Bearer 4089|PagYOsdgX2KseEFLiz5QHnAsxwtoz69QnYLOKQav`
             }
         })
             .then((result) => {
                 let response = result.data;
+                setLoading(false)
+                router.push(response.url)
+
 
             }).catch((error) => {
 
@@ -57,16 +93,15 @@ export default function Page() {
     return (
 
         <div className='max-w-[1600px] m-auto my-10 max-md:text-[12px] md:p-10'>
+            <p className='text-[#2271B9] text-[3em] text-center font-bold'>{startup.title}</p>
             <div className='bg-white flex flex-col divide-y  md:p-10 max-md:pb-6 mt-5 md:rounded-2xl'>
                 <div className='flex gap-10 max-md:flex-col mb-8'>
                     <img src={startup.logo} className='md:w-[50%] max-md:m-auto' />
                     <div className='md:flex-1 my-auto'>
                         <div className='m-auto max-md:mx-5'>
                             <p className='text-center mb-4 font-bold text-[2em] max-md:text-[1.5em]'>Stats</p>
-                            <div className="h-5 relative max-w-[100%] rounded-[5px] overflow-hidden mr-10">
-                                <div ref={progress} className="w-full h-full bg-gray-200 absolute"></div>
-                                <div class={`h-full bg-[#2271B9] rounded-[5px] relative`} style={{ width: percentage > 100 ? barWidth : barWidth * percentage / 100 }}></div>
-                            </div>
+                            <ProgressBar completed={percentage} customLabel=' ' className="h-5 relative max-w-[100%] rounded-[5px] overflow-hidden mr-10" bgColor='#2271B9' />
+
                             <p className='mb-4 text-[1.5em]'> <span className='font-bold'>{percentage}%</span> of the goal</p>
                             <p className='text-[1.5em] font-bold text-[#2271B9]'>{startup.funded.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",").toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}DZD</p>
                             <p>pledged of {startup.goal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",").toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}DZD goal</p>
@@ -75,7 +110,27 @@ export default function Page() {
                             <p className='mt-5 text-[1.5em] font-bold'>{days}</p>
                             <p>days to go</p>
                             <div className='flex gap-4 justify-center items-center mt-5 max-md:flex-col'>
-                                <p className='bg-[#000218] text-white px-5 py-3 font-bold rounded-full uppercase max-md:w-full text-center' onClick={() => { slickPayTest() }}>Back this project</p>
+                                <Popup
+                                    trigger={<p className='bg-[#000218] cursor-pointer text-white px-5 py-3 font-bold rounded-full uppercase max-md:w-full text-center'>Back this project</p>}
+                                    modal
+                                    nested
+                                >
+                                    {close => (
+                                        <div className="modal p-5">
+                                            <button className="close" onClick={close}>
+                                                <ImCross className='text-[#2271B9]' />
+                                            </button>
+                                            <div className="header">Back this project</div>
+                                            <div className="content w-full flex flex-col gap-5">
+                                                <input type='number' placeholder='amount in DZD' className='border bg-transparent p-3 rounded-[10px] w-full' onChange={(e) => { setBackingAmount(e.target.value) }} />
+                                                <p className='bg-[#2271B9] cursor-pointer  hover:bg-blue-600 text-white gird place-content-center p-2 rounded-md mb-2 text-center flex items-center content-center' onClick={() => { backingAmount < 1000 ? toast("backing amount can't be less than 1000DA") : handleBacker() }}>
+                                                    {Loading ? <Loader /> : 'continue to checkout'}</p>
+                                            </div>
+
+                                        </div>
+                                    )}
+                                </Popup>
+
                                 <p className='bg-[#E7EBF2] text-[#000218] px-5 py-3 font-bold rounded-full uppercase max-md:w-full text-center'>share</p>
                             </div>
                         </div>
