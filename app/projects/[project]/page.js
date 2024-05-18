@@ -110,26 +110,29 @@ export default function Page() {
                             <p className='mt-5 text-[1.5em] font-bold'>{days}</p>
                             <p>days to go</p>
                             <div className='flex gap-4 justify-center items-center mt-5 max-md:flex-col'>
-                                <Popup
-                                    trigger={<p className='bg-[#000218] cursor-pointer text-white px-5 py-3 font-bold rounded-full uppercase max-md:w-full text-center'>Back this project</p>}
-                                    modal
-                                    nested
-                                >
-                                    {close => (
-                                        <div className="modal p-5">
-                                            <button className="close" onClick={close}>
-                                                <ImCross className='text-[#2271B9]' />
-                                            </button>
-                                            <div className="header">Back this project</div>
-                                            <div className="content w-full flex flex-col gap-5">
-                                                <input type='number' placeholder='amount in DZD' className='border bg-transparent p-3 rounded-[10px] w-full' onChange={(e) => { setBackingAmount(e.target.value) }} />
-                                                <p className='bg-[#2271B9] cursor-pointer  hover:bg-blue-600 text-white gird place-content-center p-2 rounded-md mb-2 text-center flex items-center content-center' onClick={() => { backingAmount < 1000 ? toast("backing amount can't be less than 1000DA") : handleBacker() }}>
-                                                    {Loading ? <Loader /> : 'continue to checkout'}</p>
-                                            </div>
+                                {
+                                    user ? <Popup
+                                        trigger={<p className='bg-[#000218] cursor-pointer text-white px-5 py-3 font-bold rounded-full uppercase max-md:w-full text-center'>Back this project</p>}
+                                        modal
+                                        nested
+                                    >
+                                        {close => (
+                                            <div className="modal p-5">
+                                                <button className="close" onClick={close}>
+                                                    <ImCross className='text-[#2271B9]' />
+                                                </button>
+                                                <div className="header">Back this project</div>
+                                                <div className="content w-full flex flex-col gap-5">
+                                                    <input type='number' placeholder='amount in DZD' className='border bg-transparent p-3 rounded-[10px] w-full' onChange={(e) => { setBackingAmount(e.target.value) }} />
+                                                    <p className='bg-[#2271B9] cursor-pointer  hover:bg-blue-600 text-white gird place-content-center p-2 rounded-md mb-2 text-center flex items-center content-center' onClick={() => { backingAmount < 1000 ? toast("backing amount can't be less than 1000DA") : handleBacker() }}>
+                                                        {Loading ? <Loader /> : 'continue to checkout'}</p>
+                                                </div>
 
-                                        </div>
-                                    )}
-                                </Popup>
+                                            </div>
+                                        )}
+                                    </Popup> : <p className='bg-[#000218] cursor-pointer text-white px-5 py-3 font-bold rounded-full uppercase max-md:w-full text-center' onClick={() => { toast('you need to be logged in') }}>Back this project</p>
+
+                                }
 
                                 <p className='bg-[#E7EBF2] text-[#000218] px-5 py-3 font-bold rounded-full uppercase max-md:w-full text-center'>share</p>
                             </div>

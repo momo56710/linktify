@@ -17,23 +17,23 @@ export default function page() {
         <p className='text-center font-bold text-[1.2em]'>Empowering creators.</p>
         <p className='text-center font-bold text-gray-500 text-[0.95em]'>Combine sections from a range of categories to easily assemble pages that meet the needs of your growing business.</p>
       </div>
-      <div className='grid grid-cols-3 gap-10 max-w-[1000px] m-auto my-10'>
+      <div className='my-10 flex max-md:flex-col max-md:gap-10 justify-between md:max-w-[1000px] max-w-[90vw] m-auto'>
         {
           iamges.map((e, i) => (
-            <img key={i} className=' rounded-2xl aspect-square' src={e.src} />
-          ))
-        }
-        {
-          stats.map((e, i) => (
-            <div key={i} className='p-5 bg-white rounded-2xl'>
-              <p className='text-center text-[2em] font-bold text-[#2271B9]'>{e.number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",").toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}+</p>
-              <p className='text-center font-bold'>{e.disc}</p>
+            <div key={i} className='grid gap-5'>
+              <div ><img className='rounded-2xl aspect-square md:h-[300px] max-md:w-[90vw]' src={e.src} /></div>
+              <div className='p-5 bg-white rounded-2xl'>
+                <p className='text-center text-[2em] font-bold text-[#2271B9]'>{stats[i].number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",").toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}+</p>
+                <p className='text-center font-bold'>{stats[i].disc}</p>
+              </div>
             </div>
+
           ))
         }
+
       </div>
       <div>
-        <div className='flex p-10 max-w-[1600px] m-auto gap-10'>
+        <div className='flex p-10 max-md:flex-col-reverse max-w-[1600px] md:items-center m-auto gap-10'>
           <div className='flex-1'>
             <div className='grid md:w-[30vw]'>
               <div>
@@ -51,48 +51,18 @@ export default function page() {
 
       </div>
       <div>
-        <div className='flex p-10 max-w-[1600px] m-auto gap-10'>
-          <div className='flex-1'>
-            <div className='grid md:w-[30vw]'>
-              <div>
-                <p className='text-[#2271B9] font-bold uppercase'>Our product</p>
-                <p className='text-[2.5em] font-bold'>Simplify the startup funding journey with Linktify&apos;s intuitive platform</p>
-              </div>
-              <p>Linktify simplifies startup funding. Our intuitive platform guides you effortlessly, connecting dreams to investors.</p>
-              <div className='flex gap-1 items-center'><p>Learn more about the product</p><FaArrowRight className='text-[0.8em]' /></div>
-            </div>
-          </div>
-          <div className='flex-1'>
-            <div>
-
-              <div className='p-5 bg-white rounded-2xl'>
-                <p className='text-center text-[2em] font-bold text-[#2271B9]'>{stats[0].number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",").toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}+</p>
-                <p className='text-center font-bold'>{stats[0].disc}</p>
-              </div>
-
-
-            </div>
-            <div>
-              <div className='p-5 bg-white rounded-2xl'>
-                <p className='text-center text-[2em] font-bold text-[#2271B9]'>{stats[2].number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",").toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}+</p>
-                <p className='text-center font-bold'>{stats[2].disc}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
       <div className='m-auto my-10 max-w-[1600px]'>
         <p className='text-center text-[#2271B9] font-bold uppercase'>Testimonials</p>
         <p className='text-center text-[2.5em] font-bold'>Loved by industry leaders.</p>
         <div className='flex justify-around my-10 gap-10 flex-wrap'>
           {
-            Testimonials.map((e,i) => (<TestominialCard key={i} testimonial={e.testimonial} writer={e.writer} />))
+            Testimonials.map((e, i) => (<TestominialCard key={i} testimonial={e.testimonial} writer={e.writer} />))
           }
         </div>
       </div>
-      <div className='my-10 max-md:px-10'><NextBigMove/></div>
-      
+      <div className='my-10 max-md:px-10'><NextBigMove /></div>
+
     </div>
   )
 }

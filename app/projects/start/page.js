@@ -142,6 +142,7 @@ export default function Page() {
     }
   };
   if (isloading) { return <h1>Loading...</h1> }
+  else if (!user) { router.push('/login') }
   return (
     <div className='mt-10'>
       <p className='text-[#2271B9] text-[3em] text-center font-bold'>Start a project</p>

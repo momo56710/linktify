@@ -14,6 +14,7 @@
 
 modal {
   font-size: 12px;
+  width: 90vw;
 }
 
 .modal>.header {

@@ -1,7 +1,13 @@
-import React from 'react'
+'use client'
+import { React, useState } from 'react'
 import Xicon from '@/assets/X icon.png'
 import { FaFacebook, FaInstagramSquare, FaLinkedin } from "react-icons/fa";
 export default function Page() {
+    const [emailSubject, setEmailSubject] = useState()
+    const [emailBody, setEmailBody] = useState()
+    const [contactName, setContactName] = useState()
+    const mailtoUrl = `mailto:linktifyagency@gmail.com?subject=${emailSubject}&body=${emailBody}%0A${contactName}`
+
     return (
         <div className='m-auto'>
             <p className='text-[#2271B9] text-[3em] text-center font-bold my-10'>Contact Us</p>
@@ -15,11 +21,12 @@ export default function Page() {
                         <div className='md:p-7 max-md:pr-7 mt-5 gap-10 flex max-md:flex-col'>
                             <div className='md:flex-1'>
                                 <div className='flex gap-5 mb-5 max-md:flex-col'>
-                                    <input type='text' placeholder='name' className='bg-[#F6F4FF] md:flex-1 p-3 rounded-[10px]' />
-                                    <input type='email' placeholder='email' className='bg-[#F6F4FF] md:flex-1 p-3 rounded-[10px]' />
+                                    <input type='text' placeholder='name' className='bg-[#F6F4FF] md:flex-1 p-3 rounded-[10px]' onChange={(e) => { setContactName(e.target.value) }} />
+                                    <input type='text' placeholder='email subject' className='bg-[#F6F4FF] md:flex-1 p-3 rounded-[10px]' onChange={(e) => { setEmailSubject(e.target.value) }} />
                                 </div>
-                                <textarea rows={10} placeholder='message' className='bg-[#F6F4FF] p-3 rounded-[10px] w-[100%]' />
-                                <p className='bg-[#2271B9] text-white text-center font-bold py-4 rounded-xl mt-3'>send message</p>
+                                <textarea rows={10} placeholder='message' className='bg-[#F6F4FF] p-3 rounded-[10px] w-[100%]' onChange={(e) => { setEmailBody(e.target.value) }} />
+                                <a href={mailtoUrl} target="_blank" rel="noopener noreferrer"><p className='bg-[#2271B9] text-white text-center font-bold py-4 rounded-xl mt-3'>send message</p></a>
+
                             </div>
                             <div className='md:flex-1 grid'>
                                 <p className='text-[#001623] text-[1.5em] font-bold'>Get in touch</p>
@@ -28,7 +35,7 @@ export default function Page() {
                                 <p>35000</p>
                                 <p>26 street boumerdess</p>
                                 <p>Algeria</p>
-                                <p className='mt-5 text-[#2271B9]'>support@linktify.com</p>
+                                <p className='mt-5 text-[#2271B9]'>linktifyagency@gmail.com</p>
                                 <p className='mt-3 text-[#2271B9]'>tel : +213562519164</p>
                                 <div className='flex gap-5 mt-5'>
                                     <FaFacebook className='text-[#2271B9] text-[40px]' />
