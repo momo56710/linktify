@@ -144,12 +144,12 @@ export default function Page() {
 
             </div>
             <p className='text-center text-[6em] my-10 font-bold text-[#001623]'>our story</p>
-            <div className='flex flex-col gap-[4em]  max-md:items-center'>
+            <div className='flex flex-col gap-[4em] m-10  max-md:items-center'>
                 {
                     startup.stories.map((e, i) => (
-                        <div key={i} className='flex max-md:flex-col max-md:w-[50em] gap-10 p-10 rounded-2xl bg-white md:divide-x max-md:divide-y max-md:items-center'>
-                            <img src={e.cover} className='w-[300px] rounded-2xl aspect-square' />
-                            <div className='p-10 grid'>
+                        <div key={i} className='flex max-md:flex-col  gap-10 p-10 rounded-2xl bg-white md:divide-x max-md:divide-y max-md:items-center'>
+                            <img src={e.cover} className='max-w-[300px] rounded-2xl aspect-square' />
+                            <div className='grid'>
                                 <p className='font-bold text-[2em]'>{e.title}</p>
                                 <p>{e.disc}</p>
                             </div>
