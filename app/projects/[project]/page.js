@@ -149,7 +149,7 @@ export default function Page() {
                     startup.stories.map((e, i) => (
                         <div key={i} className='flex max-md:flex-col  gap-10 p-10 rounded-2xl bg-white md:divide-x max-md:divide-y max-md:items-center'>
                             <img src={e.cover} className='max-w-[300px] rounded-2xl aspect-square' />
-                            <div className='grid'>
+                            <div className='grid p-10'>
                                 <p className='font-bold text-[2em]'>{e.title}</p>
                                 <p>{e.disc}</p>
                             </div>
