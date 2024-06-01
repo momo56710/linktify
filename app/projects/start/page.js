@@ -29,7 +29,8 @@ export default function Page() {
       stories: [],
       owner: '',
       verified: false,
-      recommended: false
+      recommended: false,
+      field: '',
     });
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((fetchedUser) => {
@@ -60,7 +61,8 @@ export default function Page() {
       'deadline',
       'disc',
       'goal',
-      'shortDisc', // Assuming goal is a required field
+      'shortDisc',
+      'field',
     ];
 
 
@@ -155,6 +157,16 @@ export default function Page() {
           <p className='font-bold text-[1.5em]'>project name</p>
           <input type='text' placeholder='Title' className='border bg-transparent p-3 rounded-[10px] ' onChange={e => setPostData({ ...postData, title: e.target.value })} />
         </div>
+        <div className='flex flex-col gap-3'>
+          <p className='font-bold text-[1.5em]'>project Field</p>
+          <select value={postData.field} onChange={(e) => setPostData({ ...postData, field: e.target.value })} className='border bg-transparent p-3 rounded-[10px]'> {/* Added a custom class */}
+            <option value="" disabled selected>Choose a Field</option>
+            <option value="Technology & Innovation">Technology & Innovation</option>
+            <option value="Sustainability & Social Impact">Sustainability & Social Impact</option>
+            <option value="Consumer & Business Services">Consumer & Business Services</option>
+          </select>
+        </div>
+
         <div className='flex flex-col gap-3'>
           <p className='font-bold text-[1.5em]'>Project idea</p>
           <textarea
