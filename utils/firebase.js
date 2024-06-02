@@ -7,12 +7,12 @@ import { getFirestore } from 'firebase/firestore'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyC3fTYUZGBrEQIlaiRfz8I5kWDix0CYTJM",
-    authDomain: "linktify-28c2d.firebaseapp.com",
-    projectId: "linktify-28c2d",
-    storageBucket: "linktify-28c2d.appspot.com",
-    messagingSenderId: "48649335990",
-    appId: "1:48649335990:web:c66566c45e3941d1cae217"
+     apiKey : process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+     authDomain : process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+     projectId : process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+     storageBucket : process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+     messagingSenderId : process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+     appId : process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
@@ -20,4 +20,4 @@ const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const auth = getAuth(app)
 const db = getFirestore(app);
 
-export { db , auth}
+export { db , auth }

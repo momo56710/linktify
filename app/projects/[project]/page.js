@@ -34,31 +34,31 @@ export default function Page() {
         fetchData()
         progress.current ? setBarWidth(progress.current.offsetWidth) : setBarWidth(0)
     }, [progress.current])
-    console.log(user)
+
     if (isLoading) { return <div>loading...</div> }
     //getting startup
     let startup
 
     pathName = pathName.replace('/projects/', '')
     startups.map(e => (e.title.replaceAll(' ', '-').toLowerCase() == pathName ? startup = e : ''))
-    console.log(startup);
+
     // getting funding percentage
     const percentage = Math.trunc(Number(startup.funded) * 100 / Number(startup.goal))
-    console.log(percentage)
+
     // comapring percentage to progress bar
     const handleBacker = async () => {
         setLoading(true)
-        console.log(startup.backers)
+        
         startup.backers.push({ backer: { name: user.displayName, email: user.email }, amount: backingAmount })
         startup.funded = Number(startup.funded) + Number(backingAmount)
-        console.log(startup.id)
+      
         try {
             const docRef = doc(db, 'startups', startup.id);
             await updateDoc(docRef, startup);
             slickPayTest(backingAmount)
-            console.log('Document updated successfully');
+     
         } catch (error) {
-            console.error('Error updating document:', error);
+            
         }
     }
     const slickPayTest = (amount) => {

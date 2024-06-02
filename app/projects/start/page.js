@@ -39,7 +39,7 @@ export default function Page() {
     });
     setPostData({ ...postData, stories: storiesArr })
   }, [storiesArr])
-  console.log(user)
+
   function verifyStories(story) {
     var isfilled = true
     const reqStory = ['title', 'disc']
@@ -123,21 +123,18 @@ export default function Page() {
       setLoading(false)
       if (isDataFilled(postData) != true) { setWarning(isDataFilled(postData)) }
       if (verifyStories(storiesArr) != true) { setWarning(verifyStories(storiesArr)) }
-      console.log(warning)
+
 
     } else {
       try {
 
-        console.log(postData)
         const collectionRef = collection(db, 'startups')
         const response = await addDoc(collectionRef, { ...postData, owner: { id: user.uid, name: user.displayName, email: user.email, profeesion: user.photoURL } }); // Add document with data
-        console.log('Document written with ID:', response.id); // Clear form after successful post
         setError(null);
         setLoading(false)
         toast("startup created and getiing verified")
         router.push('/')
       } catch (error) {
-        console.error('Error adding document: ', error);
         setError(error.message);
         setLoading(false)
       }
