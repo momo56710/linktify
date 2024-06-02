@@ -62,13 +62,13 @@ export default function Page() {
         }
     }
     const slickPayTest = (amount) => {
-        axios.post("https://prodapi.slick-pay.com/api/v2/users/transfers", {
+        axios.post(process.env.NEXT_PUBLIC_SLICK_PAY_API_URL, {
             "amount": amount,
             "url": "",
         }, {
             headers: {
                 "Accept": 'application/json',
-                "Authorization": `Bearer 4089|PagYOsdgX2KseEFLiz5QHnAsxwtoz69QnYLOKQav`
+                "Authorization": `Bearer ${process.env.NEXT_PUBLIC_SLICK_PAY_TOKEN}`
             }
         })
             .then((result) => {
