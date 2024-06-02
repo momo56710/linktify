@@ -42,7 +42,7 @@ export default function Page() {
   return (
     <div className='m-10'>
       <div className='flex flex-row'>
-        <p className='text-[#2271B9] text-[3em] text-center font-bold'>Explore</p>
+        <p className='text-[#2271B9] text-[3em] text-center w-full mb-10 font-bold'>Explore</p>
       </div>
       <div className='lg:w-[70%] grid grid-cols-[3fr,1fr] gap-4 m-auto'>
         <input
