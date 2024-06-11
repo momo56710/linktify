@@ -11,15 +11,26 @@ import { useEffect, useState } from "react";
 export default function Home() {
 
   const [strtups, setStartups] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     async function fetchData() {
-      const data = await fetchDataFromFireStore()
-      setStartups(data)
+      try {
+        const data = await fetchDataFromFireStore()
+        setStartups(data)
+        setIsLoading(false)
+      }
+      catch (error) {
+        console.error('Error fetching data:', error)
+        setIsLoading(false) // Set isLoading to false in case of error
+      }
+
     }
     fetchData()
   }, [])
 
-
+  if (isLoading) {
+    return <div>loading</div>
+  }
 
   return (
     <>

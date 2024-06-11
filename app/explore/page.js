@@ -11,11 +11,17 @@ export default function Page() {
 
   useEffect(() => {
     async function fetchData() {
-      const data = await fetchDataFromFireStore()
-      setStartups(data)
+      try {
+        const data = await fetchDataFromFireStore()
+        setStartups(data)
+        setIsLoading(false) // Move setIsLoading inside the try block
+      } catch (error) {
+        console.error('Error fetching data:', error)
+        setIsLoading(false) // Set isLoading to false in case of error
+      }
     }
     fetchData()
-    setIsLoading(false)
+
   }, [])
 
   const filteredStartups = startups.filter((startup) => {
