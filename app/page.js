@@ -8,6 +8,7 @@ import MetricsCard from "./components/metricsCard";
 import NextBigMove from "./components/nextBigMove";
 import { fetchDataFromFireStore } from "@/utils/startups";
 import { useEffect, useState } from "react";
+import Loading from "./components/loading";
 export default function Home() {
 
   const [strtups, setStartups] = useState([])
@@ -29,7 +30,7 @@ export default function Home() {
   }, [])
 
   if (isLoading) {
-    return <div>loading</div>
+    return <Loading />
   }
 
   return (

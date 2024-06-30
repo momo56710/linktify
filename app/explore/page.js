@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import ExploreStartupsCard from './componenets/exploreStartupsCard'
 import { fetchDataFromFireStore } from '@/utils/startups'
+import Loading from '../components/Loading'
 
 export default function Page() {
   const [startups, setStartups] = useState([])
@@ -35,7 +36,7 @@ export default function Page() {
   });
 
   if (isLoading) {
-    return <div>loading</div>
+    return <Loading />
   }
 
   const fields = [ // Array of field options (assuming you have a list)

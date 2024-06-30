@@ -6,7 +6,7 @@ import { Loader } from '@/app/components/loader';
 import { useRouter } from 'next/navigation';
 import { auth } from '@/utils/firebase'
 import { toast } from 'react-toastify';
-
+import Loading from '@/components/Loading'
 // Import your initialized Firebase instance
 
 export default function Page() {
@@ -140,7 +140,7 @@ export default function Page() {
       }
     }
   };
-  if (isloading) { return <h1>Loading...</h1> }
+  if (isloading) { return <Loading /> }
   else if (!user) { router.push('/login') }
   return (
     <div className='mt-10'>

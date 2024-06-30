@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 import ProgressBar from "@ramonak/react-progress-bar";
 import { doc, updateDoc } from 'firebase/firestore';
 import { Loader } from '@/app/components/loader';
+import Loading from '../../components/Loading'
 export default function Page() {
     const router = useRouter()
     var pathName = usePathname();
@@ -18,7 +19,7 @@ export default function Page() {
     const [user, setUser] = useState('')
     const [startups, setStartups] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-    const [Loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [barWidth, setBarWidth] = useState(0)
     const progress = useRef();
     useEffect(() => {
@@ -35,7 +36,7 @@ export default function Page() {
         progress.current ? setBarWidth(progress.current.offsetWidth) : setBarWidth(0)
     }, [progress.current])
 
-    if (isLoading) { return <div>loading...</div> }
+    if (isLoading) { return <Loading /> }
     //getting startup
     let startup
 
@@ -125,7 +126,7 @@ export default function Page() {
                                                 <div className="content w-full flex flex-col gap-5">
                                                     <input type='number' placeholder='amount in DZD' className='border bg-transparent p-3 rounded-[10px] w-full' onChange={(e) => { setBackingAmount(e.target.value) }} />
                                                     <p className='bg-[#2271B9] cursor-pointer  hover:bg-blue-600 text-white gird place-content-center p-2 rounded-md mb-2 text-center flex items-center content-center' onClick={() => { backingAmount < 1000 ? toast("backing amount can't be less than 1000DA") : handleBacker() }}>
-                                                        {Loading ? <Loader /> : 'continue to checkout'}</p>
+                                                        {loading ? <Loader /> : 'continue to checkout'}</p>
                                                 </div>
 
                                             </div>

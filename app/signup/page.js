@@ -21,15 +21,19 @@ export default function Page() {
     const handleSingUp = async () => {
         if (name == '' || email == '' || password == '' || cnfPassword == '') {
             setWarning("don't leave inputs empty")
+            toast("Don't leave inputs empty")
         }
         else if (password.length < 6) {
             setWarning('password must be more than 6 char')
+            toast('Password must be more than 6 characters')
         }
         else if (!email.includes("@") || !email.includes(".") || !email.length > 2) {
             setWarning('enter valid email')
+            toast('Enter a valid email')
         }
         else if (password != cnfPassword) {
             setWarning("password doesn't match")
+            toast("Passwords don't match")
         }
         else {
             setIsLoading(true)
@@ -46,6 +50,7 @@ export default function Page() {
             } catch (e) {
                 document.querySelectorAll('input').forEach(e => e.value = '')
                 setWarning('email invalid or used before')
+                toast('Email invalid or used before')
                 setIsLoading(false)
 
 
@@ -64,7 +69,7 @@ export default function Page() {
                     <input type='password' placeholder='password' className='bg-[#fcfbfb] p-3 rounded-[10px]' onChange={e => setPassword(e.target.value)} />
                     <input type='password' placeholder='confirm password' className='bg-[#fcfbfb] p-3 rounded-[10px]' onChange={e => setCnfPassword(e.target.value)} />
                     <p className='bg-[#2271B9] text-white text-center cursor-pointer rounded-md py-2 grid place-content-center' onClick={() => handleSingUp()}>{isLoading ? <Loader /> : 'Sign up'}</p>
-                    <p>{warning}</p>
+                    <p className='text-red-600'>{warning}</p>
                     <hr />
                     <div>
                         <p>have an account ? <Link href={'/login'}><span className='text-[#2271B9] hover:underline hover:cursor-pointer'>Log in</span></Link> </p>
