@@ -36,11 +36,11 @@ export default function Home() {
   return (
     <>
 
-      <main className="flex min-h-screen flex-col items-center py-24  font-bold m-10">
+      <main className="flex min-h-screen flex-col items-center py-24  font-bold mx-10">
 
         <div className="flex flex-col max-md:flex-col-reverse">
           <div>
-            <p className="max-md:text-[2em] mt-10  text-[3em] bg-gradient-to-r from-[#1F73D4] via-[#7C39D4] to-[#1F73D4] bg-clip-text text-transparent text-center">Never start from zero again.</p>
+            <p className="max-md:text-[2em] text-[3em] bg-gradient-to-r from-[#1F73D4] via-[#7C39D4] to-[#1F73D4] bg-clip-text text-transparent text-center">Never start from zero again.</p>
             <div className="flex max-md:flex-col justify-between max-md:gap-10 w-[100%] px-[2em] mt-[3em] mb-[5em]">
               {
                 stats.map((e, i) => (
