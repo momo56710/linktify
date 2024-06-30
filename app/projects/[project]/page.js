@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 import ProgressBar from "@ramonak/react-progress-bar";
 import { doc, updateDoc } from 'firebase/firestore';
 import { Loader } from '@/app/components/loader';
-import Loading from '../../components/Loading'
+import Loading from '../../components/loading'  
 export default function Page() {
     const router = useRouter()
     var pathName = usePathname();

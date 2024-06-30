@@ -6,7 +6,7 @@ import { Loader } from '@/app/components/loader';
 import { useRouter } from 'next/navigation';
 import { auth } from '@/utils/firebase'
 import { toast } from 'react-toastify';
-import Loading from '@/components/Loading'
+import Loading from '../../components/loading'
 // Import your initialized Firebase instance
 
 export default function Page() {
